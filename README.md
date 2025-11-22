@@ -101,7 +101,7 @@ pnpm dev
 
 ## 🤝 Colaboradores
 
-- **[LP-React](https://github.com/angelessvargas)**
+- **[LP-React](https://github.com/LP-React)**
 - **[Frxnco06](https://github.com/Frxnco06)**
 - **[GAlopezdev](https://github.com/GAlopezdev)**
 - **[Monsteralan123](https://github.com/Monsteralan123)**
