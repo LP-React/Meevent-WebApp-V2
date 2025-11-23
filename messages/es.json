@@ -1,5 +1,6 @@
 {
   "HomePage": {
-    "title": "¡Hola Mundo!"
+    "title": "¡Hola Mundo!",
+    "find_event": "Buscar eventos"
   }
 }

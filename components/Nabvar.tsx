@@ -1,6 +1,10 @@
+import { useTranslations } from "next-intl"
 
 
 export const Nabvar = () => {
+
+    const t = useTranslations('HomePage')
+
     return (
         <div className="top-0 w-full h-[50px] flex  justify-evenly items-center border-b border-2 text-[18px] transition duration-200 p-[0.1px] z-100">
 
@@ -9,7 +13,7 @@ export const Nabvar = () => {
             </a>
 
             <div className="w-[900px] flex justify-evenly">
-                <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">Find Events</a>
+                <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">{t("find_event")}</a>
                 <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">Create Event</a>
                 <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">Find Plans</a>
                 <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">Create Plan</a>

@@ -1,5 +1,6 @@
 {
   "HomePage": {
-    "title": "Hello world!"
+    "title": "Hello world!",
+    "find_event": "Find Events"
   }
 }
