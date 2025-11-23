@@ -2,7 +2,7 @@
 
 export const Nabvar = () => {
     return (
-        <div className="top-0 w-full h-[50px] flex  justify-evenly items-center border-b border-2 text-[18px] transition duration-200 p-[0.1px] z-[100]">
+        <div className="top-0 w-full h-[50px] flex  justify-evenly items-center border-b border-2 text-[18px] transition duration-200 p-[0.1px] z-100">
 
             <a href="/" className="h-[40%]">
                 <img src="/logo.png" alt="" className="h-full" />
