@@ -1,6 +1,11 @@
 {
   "HomePage": {
-    "title": "¡Hola Mundo!",
-    "find_event": "Buscar eventos"
+    "title": "¡Hola mundo!",
+    "find_event": "Buscar eventos",
+    "create_event": "Crear evento",
+    "find_plans": "Buscar planes",
+    "create_plan": "Crear plan",
+    "sign_up": "Registrarse",
+    "login": "Ingresar"
   }
 }

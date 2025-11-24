@@ -1,4 +1,7 @@
+"use client"
+
 import { useTranslations } from "next-intl"
+import Link from "next/link"
 
 
 export const Nabvar = () => {
@@ -8,15 +11,15 @@ export const Nabvar = () => {
     return (
         <div className="top-0 w-full h-[50px] flex  justify-evenly items-center border-b border-2 text-[18px] transition duration-200 p-[0.1px] z-100">
 
-            <a href="/" className="h-[40%]">
+            <Link href="/" className="h-[40%]">
                 <img src="/logo.png" alt="" className="h-full" />
-            </a>
+            </Link>
 
             <div className="w-[900px] flex justify-evenly">
-                <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">{t("find_event")}</a>
-                <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">Create Event</a>
-                <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">Find Plans</a>
-                <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">Create Plan</a>
+                <Link href="#" className="no-underline text-black transition duration-200 hover:text-red-500">{t("find_event")}</Link>
+                <Link href="#" className="no-underline text-black transition duration-200 hover:text-red-500">{t("create_event")}</Link>
+                <Link href="#" className="no-underline text-black transition duration-200 hover:text-red-500">{t("find_plans")}</Link>
+                <Link href="#" className="no-underline text-black transition duration-200 hover:text-red-500">{t("create_plan")}</Link>
             </div>
 
 
@@ -32,8 +35,8 @@ export const Nabvar = () => {
 
                 {/* Sin session */}
                 <div className="flex justify-evenly w-[220px]">
-                    <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">Sing up</a>
-                    <a href="#" className="no-underline text-black transition duration-200 hover:text-red-500">Login</a>
+                    <Link href="#" className="no-underline text-black transition duration-200 hover:text-red-500">{t('sign_up')}</Link>
+                    <Link href="#" className="no-underline text-black transition duration-200 hover:text-red-500">{t('login')}</Link>
                 </div>
 
 

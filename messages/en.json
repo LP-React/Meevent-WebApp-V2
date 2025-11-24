@@ -1,6 +1,11 @@
 {
   "HomePage": {
     "title": "Hello world!",
-    "find_event": "Find Events"
+    "find_event": "Find Events",
+    "create_event": "Create Event",
+    "find_plans": "Find Plans",
+    "create_plan": "Create Plan",
+    "sign_up": "Sign Up",
+    "login": "Login"
   }
 }
