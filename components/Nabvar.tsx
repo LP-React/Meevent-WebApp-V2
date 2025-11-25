@@ -30,7 +30,8 @@ export const Nabvar = () => {
                     <div className="cursor-pointer transition duration-200 hover:text-red-500">ES</div>
                 </div>
 
-                <img src="#" alt="" className="h-[22px] cursor-pointer" />
+                <button className="border-2 px-2 rounded-lg">Oscuro</button>
+                <button className="border-2 px-2 rounded-lg">Claro</button>
 
 
                 {/* Sin session */}
