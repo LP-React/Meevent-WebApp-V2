@@ -7,20 +7,21 @@ export const ToggleThemeButton = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Esto evita hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
   if (!mounted) {
-    return null; // O un loader si quieres
+    return null;
   }
 
   return (
     <div>
       The current theme is: {theme}
-      <button onClick={() => setTheme("light")}>Light Mode</button>
-      <button onClick={() => setTheme("dark")}>Dark Mode</button>
+      <div className="block space-x-2">
+        <button onClick={() => setTheme("light")} className="px-4 py-2 border-2">Light Mode</button>
+        <button onClick={() => setTheme("dark")} className="px-4 py-2 border-2">Dark Mode</button>
+      </div>
     </div>
   );
 };

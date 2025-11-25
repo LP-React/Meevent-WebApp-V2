@@ -44,6 +44,10 @@ export default async function RootLayout({ children, params }: Props) {
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          value={{
+            light: "light",
+            dark: "dark"
+          }}
         >
           <NextIntlClientProvider>
             {children}
