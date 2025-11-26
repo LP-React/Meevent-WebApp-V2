@@ -52,9 +52,7 @@ export default async function RootLayout({ children, params }: Props) {
           }}
         >
           <NextIntlClientProvider>
-            <Nabvar/>
             {children}
-            <Footer/>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

@@ -32,8 +32,6 @@ export const Nabvar = () => {
 
                 <Moon className="cursor-pointer duration-200 mx-3 hover:text-red-500"/>
                 <Sun className="cursor-pointer duration-200 mx-3 hover:text-red-500"/>
-                {/* <button className="border-2 px-2 rounded-lg">Oscuro</button>
-                <button className="border-2 px-2 rounded-lg">Claro</button> */}
 
 
                 {/* Sin session */}
@@ -52,7 +50,6 @@ export const Nabvar = () => {
 
                 <div className="cursor-pointer transition duration-200 hover:text-red-500">
                     <LogOut/>
-                    {/* icono de cerrar session */}
                 </div>
 
 
