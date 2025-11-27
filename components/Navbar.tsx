@@ -5,6 +5,8 @@ import { LogOut, Moon, Sun } from 'lucide-react';
 import { useTheme } from "next-themes";
 import { Link, usePathname } from "@/i18n/navigations";
 import Image from "next/image";
+import { setCookie } from "cookies-next";
+import { useState } from "react";
 
 const navLinks = [
     { href: "/find-events", label: "find_event" },
@@ -13,20 +15,37 @@ const navLinks = [
     { href: "/create-plan", label: "create_plan" },
 ];
 
-export const Navbar = () => {
+interface Props {
+    cookieTheme: string
+}
 
-    const { theme, setTheme } = useTheme();
+export const Navbar = ({ cookieTheme }: Props) => {
+
+    const { theme, setTheme, resolvedTheme } = useTheme();
+    const [iconTheme, setIconTheme] = useState(cookieTheme)
     const pathname = usePathname();
+
+    const toggleTheme = () => {
+        if (theme == 'light') {
+            setTheme("dark");
+            setCookie('theme', 'dark');
+            setIconTheme('dark')
+        } else {
+            setTheme("light");
+            setCookie('theme', 'light');
+            setIconTheme('light')
+        }
+    }
 
     const t = useTranslations('Navbar')
 
     return (
         <div className="top-0 w-full h-[50px] flex justify-center items-center border-b-2 transition duration-200 z-200 fixed">
 
-            <nav className="w-[80%] flex justify-between items-center text-[18px]">
+            <nav className="w-[75%] flex justify-between items-center text-[18px]">
 
-                <Link href="/" className="w-30">
-                    <Image src="/logo.png" width={2000} height={343} alt="meevent-logo" className="w-full"/>
+                <Link href="/" className="w-30 shrink-0">
+                    <Image src="/logo.png" width={2000} height={343} alt="meevent-logo" className="w-full" />
                 </Link>
 
                 <div className="w-[800px] flex justify-evenly">
@@ -46,10 +65,10 @@ export const Navbar = () => {
                     </div>
 
                     {
-                        theme == 'light' ?
-                            <Moon className="cursor-pointer duration-200 mx-3 hover:text-red-500" onClick={() => setTheme('dark')} />
+                        iconTheme == 'light' ?
+                            <Moon className="cursor-pointer duration-200 mx-3 hover:text-red-500" onClick={toggleTheme} />
                             :
-                            <Sun className="cursor-pointer duration-200 mx-3 hover:text-red-500" onClick={() => setTheme('light')} />
+                            <Sun className="cursor-pointer duration-200 mx-3 hover:text-red-500" onClick={toggleTheme} />
                     }
 
                     {

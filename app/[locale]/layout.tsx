@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ThemeProvider } from "@/components/Theme-Provider";
 import { Navbar } from "@/components/Navbar";
+import { cookies } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,28 +35,11 @@ export default async function RootLayout({ children, params }: Props) {
     notFound();
   }
 
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get("theme")?.value || "system";
+
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const stored = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                
-                if (stored === 'dark' || (stored === 'system' && prefersDark) || (!stored && prefersDark)) {
-                  document.documentElement.classList.add('dark');
-                  document.documentElement.style.colorScheme = 'dark';
-                } else {
-                  document.documentElement.classList.remove('dark');
-                  document.documentElement.style.colorScheme = 'light';
-                }
-              } catch (e) {}
-            `,
-          }}
-        />
-      </head>
+    <html lang={locale} suppressHydrationWarning className={themeCookie === "dark" ? "dark" : ""}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -71,7 +55,7 @@ export default async function RootLayout({ children, params }: Props) {
           }}
         >
           <NextIntlClientProvider>
-            <Navbar/>
+            <Navbar cookieTheme={themeCookie} />
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>
