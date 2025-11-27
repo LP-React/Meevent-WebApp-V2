@@ -28,7 +28,6 @@ type Props = {
 };
 
 export default async function RootLayout({ children, params }: Props) {
-
   const { locale } = await params
 
   if (!hasLocale(routing.locales, locale)) {
@@ -37,6 +36,26 @@ export default async function RootLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const stored = localStorage.getItem('theme');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                
+                if (stored === 'dark' || (stored === 'system' && prefersDark) || (!stored && prefersDark)) {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.style.colorScheme = 'dark';
+                } else {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.style.colorScheme = 'light';
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -45,6 +64,7 @@ export default async function RootLayout({ children, params }: Props) {
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="theme"
           value={{
             light: "light",
             dark: "dark"

@@ -6,11 +6,15 @@
     "find_plans": "Buscar planes",
     "create_plan": "Crear plan",
     "sign_up": "Registrarse",
-    "login": "Ingresar",
+    "login": "Ingresar"
+  },
+  "Footer": {
     "faq": "Preguntas frecuentes",
     "about_us": "Sobre nosotros",
     "policy_and_privacity": "Política y privacidad",
     "find_events": "Buscar eventos",
-    "create_events": "Crear eventos"
+    "create_events": "Crear eventos",
+    "find_plans": "Buscar planes",
+    "create_plan": "Crear plan"
   }
 }
