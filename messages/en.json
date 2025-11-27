@@ -1,5 +1,17 @@
 {
-  "HomePage": {
-    "title": "Hello world!"
+  "Navbar": {
+    "title": "Hello world!",
+    "find_event": "Find Events",
+    "create_event": "Create Event",
+    "find_plans": "Find Plans",
+    "create_plan": "Create Plan",
+    "sign_up": "Sign Up",
+    "login": "Login",
+
+    "faq": "FAQ",
+    "about_us": "About Us",
+    "policy_and_privacity": "Policy and privacity",
+    "find_events": "Find Events",
+    "create_events": "Create Events"
   }
 }

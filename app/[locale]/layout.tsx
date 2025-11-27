@@ -51,6 +51,7 @@ export default async function RootLayout({ children, params }: Props) {
           }}
         >
           <NextIntlClientProvider>
+            <Navbar/>
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Home() {
 
-  const t = useTranslations('HomePage')
+  const t = useTranslations('Navbar')
 
   return (
     <div className="flex min-h-screen items-center justify-center font-sans  bg-background text-foreground bg-">
@@ -40,7 +40,7 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <ToggleThemeButton/>
+          <ToggleThemeButton />
         </div>
       </main>
     </div>

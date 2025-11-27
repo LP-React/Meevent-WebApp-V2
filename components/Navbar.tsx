@@ -1,60 +1,74 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import Link from "next/link"
-import { ArrowRightToLine, LogOut, Moon, Sun } from 'lucide-react';
+import { LogOut, Moon, Sun } from 'lucide-react';
+import { useTheme } from "next-themes";
+import { Link, usePathname } from "@/i18n/navigations";
+
+const navLinks = [
+    { href: "/find-events", label: "find_event" },
+    { href: "/create-event", label: "create_event" },
+    { href: "/find-plans", label: "find_plans" },
+    { href: "/create-plan", label: "create_plan" },
+];
 
 export const Navbar = () => {
 
-    const t = useTranslations('HomePage')
+    const { theme, setTheme } = useTheme();
+    const pathname = usePathname();
+
+    const t = useTranslations('Navbar')
 
     return (
-        <div className="top-0 w-full h-[50px] flex  justify-evenly items-center border-b border-2 text-[18px] transition duration-200 p-[0.1px] z-100">
+        <div className="top-0 w-full h-[50px] flex justify-evenly items-center border-b-2 text-[18px] transition duration-200 z-100">
 
             <Link href="/" className="h-[40%]">
-                <img src="/logo.png" alt="" className="h-full" />
+                <img src="/logo.png" alt="meevent-logo" className="h-full" />
             </Link>
 
             <div className="w-[900px] flex justify-evenly">
-                <Link href="#" className="no-underline text-foreground transition duration-200 hover:text-red-500">{t("find_event")}</Link>
-                <Link href="#" className="no-underline text-foregroun transition duration-200 hover:text-red-500">{t("create_event")}</Link>
-                <Link href="#" className="no-underline text-foregroun transition duration-200 hover:text-red-500">{t("find_plans")}</Link>
-                <Link href="#" className="no-underline text-foregroun transition duration-200 hover:text-red-500">{t("create_plan")}</Link>
+                {
+                    navLinks.map(link => (
+                        <Link className="no-underline text-foreground transition duration-200 hover:text-red-500" href={link.href} key={link.label}>{t(link.label)}</Link>
+                    ))
+                }
             </div>
 
 
             <div className="h-full w-[360px] flex justify-evenly items-center">
 
                 <div className="flex items-center justify-evenly w-[70px]">
-                    <div className="cursor-pointer transition duration-200 hover:text-red-500 mr-1">EN</div>
-                    <div className="cursor-pointer transition duration-200 hover:text-red-500">ES</div>
+                    <Link href={pathname} locale="en" className="cursor-pointer transition duration-200 hover:text-red-500 mr-1">EN</Link>
+                    <Link href={pathname} locale="es" className="cursor-pointer transition duration-200 hover:text-red-500">ES</Link>
                 </div>
 
-                <Moon className="cursor-pointer duration-200 mx-3 hover:text-red-500"/>
-                <Sun className="cursor-pointer duration-200 mx-3 hover:text-red-500"/>
+                {
+                    theme == 'light' ?
+                        <Moon className="cursor-pointer duration-200 mx-3 hover:text-red-500" onClick={() => setTheme('dark')} />
+                        :
+                        <Sun className="cursor-pointer duration-200 mx-3 hover:text-red-500" onClick={() => setTheme('light')} />
+                }
 
+                {
 
-                {/* Sin session */}
-                <div className="flex justify-evenly w-[220px]">
-                    <Link href="#" className="no-underline text-foregroun transition duration-200 hover:text-red-500">{t('sign_up')}</Link>
-                    <Link href="#" className="no-underline text-foregroun transition duration-200 hover:text-red-500">{t('login')}</Link>
-                </div>
+                    false ?
+                        <div className="flex justify-evenly w-[220px]">
+                            <Link href="#" className="no-underline text-foregroun transition duration-200 hover:text-red-500">{t('sign_up')}</Link>
+                            <Link href="#" className="no-underline text-foregroun transition duration-200 hover:text-red-500">{t('login')}</Link>
+                        </div>
+                        :
+                        <div className="flex justify-evenly w-[180px]">
+                            <div className="flex justify-center items-center h-full cursor-pointer transition duration-200 hover:text-red-500">
+                                <img src="#" alt="" className="h-[75%] shadow-sm" />
+                                <div className="ml-2.5">name</div>
+                            </div>
 
-
-                {/* Con session */}
-                <div className="flex justify-center items-center h-full cursor-pointer transition duration-200 hover:text-red-500">
-                    <img src="#" alt="" className="h-[75%] shadow-sm" />
-                    <div className="ml-2.5">name</div>
-                </div>
-
-
-                <div className="cursor-pointer transition duration-200 hover:text-red-500">
-                    <LogOut/>
-                </div>
-
-
+                            <div className="cursor-pointer transition duration-200 hover:text-red-500">
+                                <LogOut />
+                            </div>
+                        </div>
+                }
             </div>
-
         </div>
     )
 }
