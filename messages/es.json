@@ -1,5 +1,32 @@
 {
-  "HomePage": {
-    "title": "¡Hola Mundo!"
+  "Navbar": {
+    "title": "¡Hola mundo!",
+    "find_event": "Buscar eventos",
+    "create_event": "Crear evento",
+    "find_plans": "Buscar planes",
+    "create_plan": "Crear plan",
+    "sign_up": "Registrarse",
+    "login": "Ingresar"
+  },
+  "UserMenu": {
+    "Logout": "Cerrar sesión",
+    "Language": "Idioma",
+    "Spanish": "Español",
+    "English": "Inglés",
+    "Account": "Cuenta",
+    "Tickets": "Entradas",
+    "Liked": "Me gustas",
+    "Following": "Siguiendo",
+    "Settings": "Ajustes",
+    "Username": "Usuario"
+  },
+  "Footer": {
+    "faq": "Preguntas frecuentes",
+    "about_us": "Sobre nosotros",
+    "policy_and_privacity": "Política y privacidad",
+    "find_events": "Buscar eventos",
+    "create_events": "Crear eventos",
+    "find_plans": "Buscar planes",
+    "create_plan": "Crear plan"
   }
 }

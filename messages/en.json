@@ -1,5 +1,32 @@
 {
-  "HomePage": {
-    "title": "Hello world!"
+  "Navbar": {
+    "title": "Hello world!",
+    "find_event": "Find Events",
+    "create_event": "Create Event",
+    "find_plans": "Find Plans",
+    "create_plan": "Create Plan",
+    "sign_up": "Sign Up",
+    "login": "Login"
+  },
+  "UserMenu": {
+    "Logout": "Logout",
+    "Language": "Language",
+    "Spanish": "Spanish",
+    "English": "English",
+    "Account": "Account",
+    "Tickets": "Tickets",
+    "Liked": "Liked",
+    "Following": "Following",
+    "Settings": "Settings",
+    "Username": "Username"
+  },
+  "Footer": {
+    "faq": "FAQ",
+    "about_us": "About Us",
+    "policy_and_privacity": "Policy and privacity",
+    "find_events": "Find Events",
+    "create_events": "Create Events",
+    "find_plans": "Find Plans",
+    "create_plan": "Create Plan"
   }
 }

@@ -5,6 +5,8 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ThemeProvider } from "@/components/Theme-Provider";
+import { Navbar } from "@/components/Navbar";
+import { cookies } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,15 +29,17 @@ type Props = {
 };
 
 export default async function RootLayout({ children, params }: Props) {
-
   const { locale } = await params
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get("theme")?.value || "system";
+
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning className={themeCookie === "dark" ? "dark" : ""}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -44,12 +48,14 @@ export default async function RootLayout({ children, params }: Props) {
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="theme"
           value={{
             light: "light",
             dark: "dark"
           }}
         >
           <NextIntlClientProvider>
+            <Navbar cookieTheme={themeCookie} />
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>
