@@ -8,6 +8,18 @@
     "sign_up": "Sign Up",
     "login": "Login"
   },
+  "UserMenu": {
+    "Logout": "Logout",
+    "Language": "Language",
+    "Spanish": "Spanish",
+    "English": "English",
+    "Account": "Account",
+    "Tickets": "Tickets",
+    "Liked": "Liked",
+    "Following": "Following",
+    "Settings": "Settings",
+    "Username": "Username"
+  },
   "Footer": {
     "faq": "FAQ",
     "about_us": "About Us",

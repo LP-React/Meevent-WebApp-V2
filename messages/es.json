@@ -8,6 +8,18 @@
     "sign_up": "Registrarse",
     "login": "Ingresar"
   },
+  "UserMenu": {
+    "Logout": "Cerrar sesión",
+    "Language": "Idioma",
+    "Spanish": "Español",
+    "English": "Inglés",
+    "Account": "Cuenta",
+    "Tickets": "Entradas",
+    "Liked": "Me gustas",
+    "Following": "Siguiendo",
+    "Settings": "Ajustes",
+    "Username": "Usuario"
+  },
   "Footer": {
     "faq": "Preguntas frecuentes",
     "about_us": "Sobre nosotros",
