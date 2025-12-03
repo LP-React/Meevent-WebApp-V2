@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -12,7 +14,10 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowLeft, Chromium, Eye } from "lucide-react"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
+
+const t = useTranslations('Login')
 
 
 export default function page() {
@@ -24,7 +29,7 @@ export default function page() {
             <CardTitle className="text-white text-3xl">Meevent</CardTitle>
             <Link href="#">
               <CardAction className="flex text-white ">
-                <ArrowLeft className="mr-1" /> Back to Website
+                <ArrowLeft className="mr-1" />{t("back")} Back to Website
               </CardAction>
             </Link>
           </CardHeader>

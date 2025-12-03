@@ -28,5 +28,8 @@
     "create_events": "Create Events",
     "find_plans": "Find Plans",
     "create_plan": "Create Plan"
+  },
+  "Login": {
+    "back": "Back to Website"
   }
 }

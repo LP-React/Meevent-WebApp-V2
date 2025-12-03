@@ -28,5 +28,8 @@
     "create_events": "Crear eventos",
     "find_plans": "Buscar planes",
     "create_plan": "Crear plan"
+  },
+  "Login": {
+    "back": "Volver al sitio web"
   }
 }
