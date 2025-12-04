@@ -30,6 +30,17 @@
     "create_plan": "Create Plan"
   },
   "Login": {
-    "back": "Back to Website"
+    "Welcome": "Welcome Back!",
+    "Log": "Log in to start crasfsd ags viods whit evo",
+    "Email": "Email",
+    "Password": "Password",
+    "Remember": "Remenber",
+    "ForgotPassword": "Forgot your Password?",
+    "Login": "Login",
+    "OrConnect": "Or connect with",
+    "Continue": "Continue with Google",
+    "DontHave": "Don't have an account?",
+    "Sign": "Sign up here",
+    "BackTo": "Back to the website"
   }
 }

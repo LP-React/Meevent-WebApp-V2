@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -13,23 +11,21 @@ import {
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Link } from "@/i18n/navigations"
 import { ArrowLeft, Chromium, Eye } from "lucide-react"
 import { useTranslations } from "next-intl"
-import Link from "next/link"
 
-const t = useTranslations('Login')
-
-
-export default function page() {
+export default function LoginPage() {
+  const t = useTranslations('Login')
   return (
     <div>
       <div className="bg-[url('/fondo.jpg')] bg-black/55 bg-blend-multiply grid  grid-cols-[2fr_1.6fr] p-3 gap-3 bg-cover h-dvh">
         <Card className="bg-transparent h-full flex flex-col justify-between p-10 border-none">
           <CardHeader>
             <CardTitle className="text-white text-3xl">Meevent</CardTitle>
-            <Link href="#">
+            <Link href="./">
               <CardAction className="flex text-white ">
-                <ArrowLeft className="mr-1" />{t("back")} Back to Website
+                <ArrowLeft className="mr-1" />{t("BackTo")}
               </CardAction>
             </Link>
           </CardHeader>
@@ -44,15 +40,15 @@ export default function page() {
               From quick social media clips to full-length videos our powerful editor
               <p>lets you work across devices.</p>
             </CardDescription>
-   
+
           </div>
         </Card>
 
         <Card className="flex justify-center p-25 ">
           <CardHeader className="mb-4">
-            <CardTitle className="text-5xl mb-2">Welcome Back!</CardTitle>
+            <CardTitle className="text-5xl mb-2">{t("Welcome")}</CardTitle>
             <CardDescription>
-              Log in to start crasfsd ags viods whit evo
+              {t("Log")}
             </CardDescription>
 
           </CardHeader>
@@ -60,7 +56,7 @@ export default function page() {
             <form>
               <div className="flex flex-col gap-6">
                 <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">{t("Email")}</Label>
                   <Input
                     id="email"
                     type="email"
@@ -71,7 +67,7 @@ export default function page() {
                 </div>
                 <div className="grid gap-2">
                   <div className="flex items-center">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">{t("Password")}</Label>
                   </div>
                   <div className="relative">
                     <Input id="password" type="password" required className="h-12" />
@@ -83,14 +79,11 @@ export default function page() {
                   <div className="flex justify-between mt-1 mb-5">
                     <div className="flex items-center">
                       <Checkbox className="mr-1" />
-                      <p>Recordar</p>
+                      <p>{t("Remember")}</p>
 
                     </div>
-                    <a
-                      href="#"
-                      className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                    >
-                      Forgot your password?
+                    <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
+                      {t("ForgotPassword")}
                     </a>
                   </div>
                 </div>
@@ -99,28 +92,20 @@ export default function page() {
           </CardContent>
           <CardFooter className="flex-col gap-2">
             <Button type="submit" className="w-full rounded-full h-12">
-              Login
+              {t("Login")}
             </Button>
             <div className="flex items-center w-full my-4">
-
-
               <div className="grow border-t border-gray-300 dark:border-gray-700"></div>
-
-
               <span className="shrink-0 mx-4 text-sm text-muted-foreground">
-                O conéctate con
+                {t("OrConnect")}
               </span>
-
-
               <div className="grow border-t border-gray-300 dark:border-gray-700"></div>
-
             </div>
             <Button variant="outline" className="w-full rounded-full h-12">
-              <Chromium />Continue with Google
+              <Chromium />{t("Continue")}
             </Button>
-
             <div className="mt-5">
-              <p>Don't have an account? <Link href="#" className="font-bold">Sing up here</Link></p>
+              <p>{t("DontHave")} <Link href="#" className="font-bold">{t("Sign")}</Link></p>
             </div>
           </CardFooter>
         </Card>
