@@ -27,6 +27,7 @@ export const Navbar = ({ cookieTheme }: Props) => {
     const { theme, setTheme } = useTheme();
     const [iconTheme, setIconTheme] = useState(cookieTheme)
     const { status } = useSession()
+    
 
 
     const toggleTheme = () => {

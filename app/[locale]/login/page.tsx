@@ -1,3 +1,4 @@
+import { SignIn } from "@/components/SignInButton"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -74,17 +75,15 @@ export default function LoginPage() {
                     <div className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer">
                       <Eye className="h-4 w-4 text-muted-foreground" />
                     </div>
-
                   </div>
                   <div className="flex justify-between mt-1 mb-5">
                     <div className="flex items-center">
                       <Checkbox className="mr-1" />
-                      <p>{t("Remember")}</p>
-
+                      <span>{t("Remember")}</span>
                     </div>
-                    <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
+                    <Link href="/account/reset-password" className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
                       {t("ForgotPassword")}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -101,9 +100,7 @@ export default function LoginPage() {
               </span>
               <div className="grow border-t border-gray-300 dark:border-gray-700"></div>
             </div>
-            <Button variant="outline" className="w-full rounded-full h-12">
-              <Chromium />{t("Continue")}
-            </Button>
+            <SignIn />
             <div className="mt-5">
               <p>{t("DontHave")} <Link href="#" className="font-bold">{t("Sign")}</Link></p>
             </div>
