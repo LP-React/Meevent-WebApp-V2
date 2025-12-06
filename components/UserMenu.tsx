@@ -67,14 +67,13 @@ export const UserMenu = () => {
                     <div className="flex justify-between w-45 items-center h-full cursor-pointer">
                         <div className="flex justify-center items-center">
                             {
-                                status == "authenticated" || "loading" ? (
+                                (status == "authenticated" || status == "loading") && session?.user?.image ? (
                                     <Image width={96} height={96} src={session?.user?.image} alt="User Avatar" loading="eager" className="h-6.5 w-6.5 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full" />)
-                                    : (<Skeleton className="h-6.5 w-6.5 rounded-full" />
-                                    )
+                                    : (<Skeleton className="h-6.5 w-6.5 rounded-full" />)
                             }
                             {
-                                status == "authenticated" || "loading" ? (<div className="ml-2 text-[16px] font-normal">{session?.user?.name}</div>)
-                                    : (<Skeleton className="ml-2 w-24 h-3" />)
+                                (status == "authenticated" || status == "loading") && session?.user?.name ? (<div className="ml-2 text-[16px] font-normal">{session?.user?.name}</div>)
+                                    : (<Skeleton className="ml-2 w-28 h-3" />)
                             }
                         </div>
                         <ChevronDown />
