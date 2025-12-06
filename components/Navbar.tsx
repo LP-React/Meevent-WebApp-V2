@@ -8,6 +8,7 @@ import Image from "next/image";
 import { setCookie } from "cookies-next";
 import { useState } from "react";
 import { UserMenu } from "./UserMenu";
+import { SessionProvider } from "next-auth/react";
 
 const navLinks = [
     { href: "/find-events", label: "find_event" },
@@ -62,7 +63,9 @@ export const Navbar = ({ cookieTheme }: Props) => {
                             <Link href="#" className="no-underline text-foreground transition duration-200 hover:text-red-500">{t('sign_up')}</Link>
                             <Link href="#" className="no-underline text-foreground transition duration-200 hover:text-red-500">{t('login')}</Link>
                         </div> :
-                        <UserMenu />
+                        <SessionProvider>
+                            <UserMenu />
+                        </SessionProvider>
                     }
                     {iconTheme == 'light' ?
                         <Moon className="cursor-pointer transition duration-200 hover:text-red-500" onClick={toggleTheme} /> :

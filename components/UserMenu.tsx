@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Link, usePathname } from "@/i18n/navigations"
 import { CheckCheck, ChevronDown, Heart, LogOut, MoveRight, Settings, Ticket } from "lucide-react"
+import { useSession } from "next-auth/react"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 
@@ -52,6 +53,10 @@ export const UserMenu = () => {
 
     const pathname = usePathname();
     const t = useTranslations('UserMenu');
+    const { data: session } = useSession()
+
+    console.log(session);
+
 
     return (
         <DropdownMenu>
@@ -60,8 +65,15 @@ export const UserMenu = () => {
                 <Button variant={"ghost"}>
                     <div className="flex justify-between w-45 items-center h-full cursor-pointer">
                         <div className="flex justify-center items-center">
-                            <Image src="/user-photo.jpg" width={606} height={680} alt="user-photo" className="h-6 w-6 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full" />
-                            <div className="ml-2 text-[16px] font-normal">{t("Username")}</div>
+                            {
+                                session?.user?.image && (
+                                    <Image width={96} height={96} src={session?.user?.image} alt="User Avatar" loading="eager" className="h-6.5 w-6.5 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full" />
+                                )
+                            }
+                            {
+                                session?.user?.name ? (<div className="ml-2 text-[16px] font-normal">{session?.user?.name}</div>)
+                                    : (<div className="ml-2 text-[16px] font-normal">{t("Username")}</div>)
+                            }
                         </div>
                         <ChevronDown />
                     </div>

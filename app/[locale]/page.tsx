@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import ButtonGoogle from "@/components/ButtonGoogle"
-import { UserInfo } from "@/components/UserInfo";
 
 export default function Home() {
 
@@ -14,7 +13,6 @@ export default function Home() {
             {t('title')}
           </h1>
           <ButtonGoogle/>
-          <UserInfo/>
         </div>
       </main>
     </div>
