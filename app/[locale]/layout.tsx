@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing';
 import { ThemeProvider } from "@/components/Theme-Provider";
 import { Navbar } from "@/components/Navbar";
 import { cookies } from "next/headers";
+import { Providers } from "@/components/providers/Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,8 +56,10 @@ export default async function RootLayout({ children, params }: Props) {
           }}
         >
           <NextIntlClientProvider>
-            <Navbar cookieTheme={themeCookie} />
-            {children}
+            <Providers>
+              <Navbar cookieTheme={themeCookie} />
+              {children}
+            </Providers>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

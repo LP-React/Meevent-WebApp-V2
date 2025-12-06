@@ -16,9 +16,10 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Link, usePathname } from "@/i18n/navigations"
 import { CheckCheck, ChevronDown, Heart, LogOut, MoveRight, Settings, Ticket } from "lucide-react"
-import { useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
+import { Skeleton } from "./ui/skeleton"
 
 const menuOptions = [
     {
@@ -53,7 +54,7 @@ export const UserMenu = () => {
 
     const pathname = usePathname();
     const t = useTranslations('UserMenu');
-    const { data: session } = useSession()
+    const { data: session, status } = useSession()
 
     console.log(session);
 
@@ -66,13 +67,14 @@ export const UserMenu = () => {
                     <div className="flex justify-between w-45 items-center h-full cursor-pointer">
                         <div className="flex justify-center items-center">
                             {
-                                session?.user?.image && (
-                                    <Image width={96} height={96} src={session?.user?.image} alt="User Avatar" loading="eager" className="h-6.5 w-6.5 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full" />
-                                )
+                                status == "authenticated" || "loading" ? (
+                                    <Image width={96} height={96} src={session?.user?.image} alt="User Avatar" loading="eager" className="h-6.5 w-6.5 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full" />)
+                                    : (<Skeleton className="h-6.5 w-6.5 rounded-full" />
+                                    )
                             }
                             {
-                                session?.user?.name ? (<div className="ml-2 text-[16px] font-normal">{session?.user?.name}</div>)
-                                    : (<div className="ml-2 text-[16px] font-normal">{t("Username")}</div>)
+                                status == "authenticated" || "loading" ? (<div className="ml-2 text-[16px] font-normal">{session?.user?.name}</div>)
+                                    : (<Skeleton className="ml-2 w-24 h-3" />)
                             }
                         </div>
                         <ChevronDown />
@@ -123,7 +125,7 @@ export const UserMenu = () => {
 
                 {/* Logout */}
                 <DropdownMenuGroup>
-                    <DropdownMenuItem className="justify-between" /* //TODO: onClick={() => onLogout()} */>
+                    <DropdownMenuItem className="justify-between" onClick={() => signOut()}>
                         <span>{t('Logout')}</span>
                         <LogOut />
                     </DropdownMenuItem>
@@ -131,6 +133,6 @@ export const UserMenu = () => {
 
             </DropdownMenuContent>
 
-        </DropdownMenu>
+        </DropdownMenu >
     )
 }
