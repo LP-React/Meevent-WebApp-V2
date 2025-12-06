@@ -1,0 +1,126 @@
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { ArrowLeft, Chromium, Eye } from "lucide-react"
+import Link from "next/link"
+
+
+export default function page() {
+  return (
+    <div>
+      <div className="bg-[url('/fondo.jpg')] bg-black/55 bg-blend-multiply grid  grid-cols-[2fr_1.6fr] p-3 gap-3 bg-cover h-dvh">
+        <Card className="bg-transparent h-full flex flex-col justify-between p-10 border-none">
+          <CardHeader>
+            <CardTitle className="text-white text-3xl">Meevent</CardTitle>
+            <Link href="#">
+              <CardAction className="flex text-white ">
+                <ArrowLeft className="mr-1" /> Back to Website
+              </CardAction>
+            </Link>
+          </CardHeader>
+
+          <div className="p-5">
+            <CardTitle className="text-white text-5xl mb-5">
+              Edit Smarter. Export Faster.
+              <p>Create Anywhere.</p>
+            </CardTitle>
+
+            <CardDescription className="text-white opacity-80">
+              From quick social media clips to full-length videos our powerful editor
+              <p>lets you work across devices.</p>
+            </CardDescription>
+   
+          </div>
+        </Card>
+
+        <Card className="flex justify-center p-25 ">
+          <CardHeader className="mb-4">
+            <CardTitle className="text-5xl mb-2">Welcome Back!</CardTitle>
+            <CardDescription>
+              Log in to start crasfsd ags viods whit evo
+            </CardDescription>
+
+          </CardHeader>
+          <CardContent>
+            <form>
+              <div className="flex flex-col gap-6">
+                <div className="grid gap-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="m@example.com"
+                    required
+                    className="h-12"
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <div className="flex items-center">
+                    <Label htmlFor="password">Password</Label>
+                  </div>
+                  <div className="relative">
+                    <Input id="password" type="password" required className="h-12" />
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer">
+                      <Eye className="h-4 w-4 text-muted-foreground" />
+                    </div>
+
+                  </div>
+                  <div className="flex justify-between mt-1 mb-5">
+                    <div className="flex items-center">
+                      <Checkbox className="mr-1" />
+                      <p>Recordar</p>
+
+                    </div>
+                    <a
+                      href="#"
+                      className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                    >
+                      Forgot your password?
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </CardContent>
+          <CardFooter className="flex-col gap-2">
+            <Button type="submit" className="w-full rounded-full h-12">
+              Login
+            </Button>
+            <div className="flex items-center w-full my-4">
+
+
+              <div className="grow border-t border-gray-300 dark:border-gray-700"></div>
+
+
+              <span className="shrink-0 mx-4 text-sm text-muted-foreground">
+                O conéctate con
+              </span>
+
+
+              <div className="grow border-t border-gray-300 dark:border-gray-700"></div>
+
+            </div>
+            <Button variant="outline" className="w-full rounded-full h-12">
+              <Chromium />Continue with Google
+            </Button>
+
+            <div className="mt-5">
+              <p>Don't have an account? <Link href="#" className="font-bold">Sing up here</Link></p>
+            </div>
+          </CardFooter>
+        </Card>
+
+      </div>
+    </div>
+  )
+}
