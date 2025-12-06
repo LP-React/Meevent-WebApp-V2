@@ -32,6 +32,9 @@ importers:
       next:
         specifier: 16.0.7
         version: 16.0.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.1))(react@19.2.1)
+      next-auth:
+        specifier: 5.0.0-beta.30
+        version: 5.0.0-beta.30(next@16.0.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.1))(react@19.2.1))(react@19.2.1)
       next-intl:
         specifier: ^4.5.5
         version: 4.5.5(next@16.0.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.1))(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
@@ -4539,11 +4542,11 @@ snapshots:
 
   negotiator@1.0.0: {}
 
-  next-auth@5.0.0-beta.30(next@16.0.3(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0):
+  next-auth@5.0.0-beta.30(next@16.0.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.1))(react@19.2.1))(react@19.2.1):
     dependencies:
       '@auth/core': 0.41.0
-      next: 16.0.3(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      react: 19.2.0
+      next: 16.0.7(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.1))(react@19.2.1)
+      react: 19.2.1
 
   next-intl-swc-plugin-extractor@4.5.5: {}
 
