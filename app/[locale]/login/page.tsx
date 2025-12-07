@@ -20,9 +20,9 @@ export default function LoginPage() {
   const t = useTranslations('Login')
   return (
     <div>
-      <div className="bg-[url('/fondo.jpg')] bg-black/55 bg-blend-multiply grid  grid-cols-[2fr_1.6fr] p-3 gap-3 bg-cover h-dvh">
-        <Card className="bg-transparent h-full flex flex-col justify-between p-10 border-none">
-          <CardHeader>
+      <div className="bg-[url('/fondo.jpg')] bg-black/55 bg-blend-multiply grid  grid-cols-1 sm:grid-cols-1 sm:p-0 gap-3 bg-cover h-dvh md:p-4 lg:grid-cols-[2fr_1.5fr] xl:grid-cols-[2fr_1.5fr]">
+        <Card className="hidden bg-transparent h-full flex-col justify-between p-10 border-none sm:hidden lg:flex lg:p-1 xl:p-10">
+          <CardHeader className="flex justify-between items-center">
             <CardTitle className="text-white text-3xl">Meevent</CardTitle>
             <Link href="./">
               <CardAction className="flex text-white ">
@@ -45,7 +45,7 @@ export default function LoginPage() {
           </div>
         </Card>
 
-        <Card className="flex justify-center p-25 ">
+        <Card className="flex rounded-none justify-center p-1 sm:p-5 sm:rounded-none md:rounded-xl md:p-8 lg:p-1 xl:p-10">
           <CardHeader className="mb-4">
             <CardTitle className="text-5xl mb-2">{t("Welcome")}</CardTitle>
             <CardDescription>
