@@ -43,5 +43,14 @@
     "Sign": "Sign up here",
     "BackTo": "Back to the website",
     "Language": "English"
+  },
+  "Register": {
+    "faq": "FAQ",
+    "about_us": "About Us",
+    "policy_and_privacity": "Policy and privacity",
+    "find_events": "Find Events",
+    "create_events": "Create Events",
+    "find_plans": "Find Plans",
+    "create_plan": "Create Plan"
   }
 }
