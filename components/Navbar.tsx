@@ -10,6 +10,7 @@ import { useState } from "react";
 import { UserMenu } from "./UserMenu";
 import { SessionProvider, useSession } from "next-auth/react";
 import { Button } from "./ui/button";
+import { useIconTheme } from "./hooks/useIconTheme";
 
 const navLinks = [
     { href: "/find-events", label: "find_event" },
@@ -24,23 +25,8 @@ interface Props {
 
 export const Navbar = ({ cookieTheme }: Props) => {
 
-    const { theme, setTheme } = useTheme();
-    const [iconTheme, setIconTheme] = useState(cookieTheme)
     const { status } = useSession()
-    
-
-
-    const toggleTheme = () => {
-        if (theme == 'light') {
-            setTheme("dark");
-            setCookie('theme', 'dark');
-            setIconTheme('dark')
-        } else {
-            setTheme("light");
-            setCookie('theme', 'light');
-            setIconTheme('light')
-        }
-    }
+    const { iconTheme, toggleTheme } = useIconTheme(cookieTheme)
 
     const t = useTranslations('Navbar')
 
@@ -66,7 +52,7 @@ export const Navbar = ({ cookieTheme }: Props) => {
                 }
 
                 <div className="h-full flex items-center">
-                    {status == "authenticated" ?
+                    {status == "authenticated" || status == "loading" ?
                         <UserMenu />
                         :
                         <div className="flex justify-between items-center w-[165px]">
@@ -79,6 +65,7 @@ export const Navbar = ({ cookieTheme }: Props) => {
                         </div>
                     }
                 </div>
+
             </nav>
         </div>
     )

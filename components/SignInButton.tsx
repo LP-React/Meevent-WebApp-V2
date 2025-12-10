@@ -9,7 +9,7 @@ export function SignIn() {
     const t = useTranslations('Login')
 
     return (
-        <Button variant="outline" className="w-full rounded-full h-12" onClick={() => signIn("google")}>
+        <Button variant="outline" className="w-full rounded-full h-12" onClick={() => signIn("google", {redirectTo: "/"})}>
             <Chromium />{t("Continue")}
         </Button>
     )
