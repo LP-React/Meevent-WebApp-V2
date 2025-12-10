@@ -4,56 +4,7 @@ import { FormUsSe } from './FormUsSe'
 import { Button } from './ui/button'
 import { useTranslations } from 'next-intl'
 
-/* export const FormUserMulti = () => {
 
-    const t = useTranslations('Register')
-    const [step, setStep] = useState(1);
-    const next = () => setStep((s) => s + 1);
-    const back = () => setStep((s) => s - 1);
-
-    const handleSubmit = () => {
-        console.log("Cabro el que lo lee");
-    };
-    return (
-        <div className='w-full'>
-
-            {step === 1 && (
-                <div>
-                    <p className="text-center text-sm text-muted-foreground grid grid-cols-2 gap-2 mb-5">
-                        <div className='bg-black h-2 rounded-bl-3xl rounded-tr-3xl '></div>
-                        <div className='outline-1 h-2 rounded-bl-3xl rounded-tr-3xl'></div>
-                        
-                    </p>
-                </div>
-            )}
-            {step === 2 && (
-                <p className="text-center text-sm text-muted-foreground grid grid-cols-2 gap-2 mb-5">
-                    <div className='bg-black h-2 rounded-bl-3xl rounded-tr-3xl '></div>
-                    <div className='bg-black h-2 rounded-bl-3xl rounded-tr-3xl'></div>
-                </p>
-            )}
-            {step === 1 && <FormUsPri />}
-            {step === 2 && <FormUsSe />}
-
-            <div className="flex justify-evenly mt-4">
-                {step > 1 && (
-                    <Button variant="outline" onClick={back}>
-                        Atrás
-                    </Button>
-                )}
-
-                {step < 2 ? (
-                    <Button onClick={next}>Siguiente</Button>
-                ) : (
-                    <Button onClick={handleSubmit}>Ingresar</Button>
-                )}
-            </div>
-
-
-        </div>
-    )
-}
- */
 
 export const FormUserMulti = () => {
   const t = useTranslations("Register");

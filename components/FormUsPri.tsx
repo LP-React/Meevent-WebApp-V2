@@ -7,50 +7,6 @@ import { Eye, EyeOff } from 'lucide-react'
 import { Link } from "@/i18n/navigations"
 import { Button } from './ui/button'
 
-/* export const FormUsPri = () => {
-    const t = useTranslations('Register')
-    const [showPassword, setShowPassword] = useState(false)
-    return (
-        <form>
-            <div className="flex flex-col gap-5 mb-5">
-                <div className="grid grid-cols-2 gap-2">
-                    <div className="grid gap-2">
-                        <Label htmlFor="email">{t("name")}</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            placeholder="Aaron"
-                            required
-                            className="h-8"
-                        />
-                    </div>
-                    <div className="grid gap-2">
-                        <Label htmlFor="email">{t("lastName")}</Label>
-                        <Input
-                            id="email"
-                            type=""
-                            placeholder="Gomez"
-                            required
-                            className="h-8"
-                        />
-                    </div>
-                </div>
-                
-                <div className="grid gap-2">
-                    <Label htmlFor="email">{t("Email")}</Label>
-                    <Input
-                        id="email"
-                        type="email"
-                        placeholder="m@example.com"
-                        required
-                        className="h-8"
-                    />
-                </div>
-            </div>
-        </form>
-    )
-}
- */
 
 export const FormUsPri = ({
   values,

@@ -15,79 +15,7 @@ import {
 } from "@/components/ui/popover"
 
 
-/* export const FormUsSe = () => {
-    const t = useTranslations('Register')
-    const [showPassword, setShowPassword] = useState(false)
 
-    const [open, setOpen] = React.useState(false)
-    const [date, setDate] = React.useState<Date | undefined>(undefined)
-    return (
-        <form>
-            <div className="flex flex-col gap-5">
-
-                <div className="grid grid-cols-2 gap-2">
-                    <div className="grid gap-2">
-                        <Label htmlFor="email">{t("numero")}</Label>
-                        <Input
-                            id="number"
-                            type="number"
-                            placeholder="907 305 447"
-                            required
-                            className="h-8"
-                        />
-                    </div>
-                    <div className="grid gap-2">
-
-                        <Label htmlFor="email">{t("fechaN")}</Label>
-
-                        <div className="flex flex-col gap-3">
-                            <Popover open={open} onOpenChange={setOpen}>
-                                <PopoverTrigger asChild>
-                                    <Button
-                                        variant="outline"
-                                        id="date"
-                                        className="w-48 justify-between font-normal h-8"
-                                    >
-                                        {date ? date.toLocaleDateString() : "Selecciona fecha"}
-                                        <ChevronDownIcon />
-                                    </Button>
-                                </PopoverTrigger>
-                                <PopoverContent className="w-auto overflow-hidden p-0" align="start">
-                                    <Calendar
-                                        mode="single"
-                                        selected={date}
-                                        captionLayout="dropdown"
-                                        onSelect={(date) => {
-                                            setDate(date)
-                                            setOpen(false)
-                                        }}
-                                    />
-                                </PopoverContent>
-                            </Popover>
-                        </div>
-                    </div>
-                </div>
-                <div className="grid gap-3">
-                    <div className="flex items-center">
-                        <Label htmlFor="password">{t("Password")}</Label>
-                    </div>
-                    <div className="relative">
-                        <Input id="password" type={showPassword ? "text" : "password"} required className="h-8" />
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
-                            {showPassword ? (
-                                <EyeOff className="h-4 w-4 text-muted-foreground" />
-                            ) : (
-                                <Eye className="h-4 w-4 text-muted-foreground" />
-                            )}
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </form>
-    )
-}
- */
 
 export const FormUsSe = ({
   values,
