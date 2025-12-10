@@ -28,5 +28,20 @@
     "create_events": "Crear eventos",
     "find_plans": "Buscar planes",
     "create_plan": "Crear plan"
+  },
+  "Login": {
+    "Welcome": "¡Bienvenido de nuevo!",
+    "Log": "Inicia sesión para comenzar a crear eventos con Meevent",
+    "Email": "Correo electrónico",
+    "Password": "Contraseña",
+    "Remember": "Recordarme",
+    "ForgotPassword": "¿Olvidaste tu contraseña?",
+    "Login": "Iniciar sesión",
+    "OrConnect": "O conecta con",
+    "Continue": "Continuar con Google",
+    "DontHave": "¿No tienes una cuenta?",
+    "Sign": "Regístrate aquí",
+    "BackTo": "Volver al sitio web",
+    "Language": "Español"
   }
 }
