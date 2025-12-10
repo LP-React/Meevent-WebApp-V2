@@ -20,12 +20,12 @@ import { ArrowLeft, Chromium, Eye, EyeOff, Languages, Moon, Sun } from "lucide-r
 import { useTranslations } from "next-intl"
 import { useState } from "react"
 
-export default function Register() {
+export default function page() {
     const [showPassword, setShowPassword] = useState(false)
     const [dark, setDark] = useState(false)
     const [lang, setLang] = useState("Español")
 
-    const t = useTranslations('Register')
+    const t = useTranslations('artista')
     return (
         <div>
             <div className="bg-[url('/bg2.jpg')] bg-black/55 bg-blend-multiply grid  grid-cols-1 sm:grid-cols-1 sm:p-0 gap-3 bg-cover h-dvh md:p-4 lg:grid-cols-[2fr_1.5fr] xl:grid-cols-[1.5fr_2fr]">
@@ -69,22 +69,17 @@ export default function Register() {
                             <p>{t("DontHave")}</p>
                         </div>
                         <div className="flex items-center w-full justify-center">
-                            <Link href="/register/artista">
-                                <Button type="submit" className="rounded-full h-12 mr-2 w-32">
-                                    {t("artista")}
-                                </Button>
-                            </Link>
+                            <Button type="submit" className="rounded-full h-12 mr-2 w-32">
+                                {t("artista")}
+                            </Button>
                             <div className="grow border-t border-gray-300 dark:border-gray-700"></div>
                             <span className="shrink-0 mx-4 text-sm text-muted-foreground">
                                 {t("OrConnect")}
                             </span>
                             <div className="grow border-t border-gray-300 dark:border-gray-700 mr-2"></div>
-                            <Link href="/register/organizador">
-                                <Button variant="outline" type="submit" className="rounded-full h-12 w-32">
-                                    {t("organizador")}
-                                </Button>
-                            </Link>
-
+                            <Button variant="outline" type="submit" className="rounded-full h-12 w-32">
+                                {t("organizador")}
+                            </Button>
                         </div>
 
                     </CardFooter>
