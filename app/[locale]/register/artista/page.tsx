@@ -1,7 +1,5 @@
 "use client"
-import { FormUserMulti } from "@/components/FormUserMulti"
-import { FormUsPri } from "@/components/FormUsPri"
-import { FormUsSe } from "@/components/FormUsSe"
+import { FormArMulti } from "@/components/FormArMulti"
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -12,9 +10,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Link } from "@/i18n/navigations"
 import { ArrowLeft, Chromium, Eye, EyeOff, Languages, Moon, Sun } from "lucide-react"
 import { useTranslations } from "next-intl"
@@ -62,7 +57,7 @@ export default function page() {
 
                     </CardHeader>
                     <CardContent>
-                        <FormUserMulti />
+                        <FormArMulti />
                     </CardContent>
                     <CardFooter className="flex-col gap-0">
                         <div className="mb-3">
