@@ -1,4 +1,32 @@
 {
+  "common": {
+    "language": "English",
+    "backTo": "Back to the website",
+    "email": "Email",
+    "confirmEmail": "Confirm your email",
+    "createPassword": "Create password",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "remember": "Remember me",
+    "forgotPassword": "Forgot your password?",
+    "next": "Next",
+    "continueWithGoogle": "Continue with Google",
+    "or": "Or",
+    "lastName": "Last name",
+    "name": "Name",
+    "phone": "Phone",
+    "createAccount": "Create your account",
+    "signUp": "Sign Up",
+    "birthDate": "Birth date",
+    "back": "Back",
+    "orContinueWith": "Or continue with:",
+    "user": "User",
+    "userDescription": "Join to events, buy tickets and more...",
+    "artist": "Artist",
+    "artistDescription": "Contact with organizers...",
+    "organizer": "Organizer",
+    "organizerDescription": "Create events, contact with artist and more..."
+  },
   "Navbar": {
     "title": "Hello world!",
     "find_event": "Find Events",
@@ -44,18 +72,35 @@
     "BackTo": "Back to the website",
     "Language": "English"
   },
-  "Register": {
-    "Welcome": "Welcome Back!",
-    "Log": "Log in to start crasfsd ags viods whit evo",
-    "Email": "Email",
-    "Password": "Password",
-    "Remember": "Remenber",
-    "ForgotPassword": "Forgot your Password?",
-    "Login": "Login",
-    "OrConnect": "Or connect with",
-    "Continue": "Continue with Google",
-    "DontHave": "Don't have an account?",
+  "signUp": {
+    "sign": "Enjoy the best events",
+    "artistOrOrganizer": "Are you an artist or organizer?",
+    "SignUpHere": "Sign up here"
+  },
+  "signUpArtist": {
+    "Welcome": "Welcome artist",
+    "Log": "Show your talent and amaze the world",
+    "DontHave": "Are you an artist or organizer?",
     "Sign": "Sign up here",
-    "BackTo": "Back to the website"
+    "name": "Stage name",
+    "fechaN": "Birth date",
+    "enterRegistro": "Register",
+    "NameArt": "Music genre",
+    "redesAr": "Social media",
+    "organizador": "Organizer"
+  },
+  "signUpOrganizer": {
+    "Welcome": "Welcome Organizer",
+    "direccion": "Address",
+    "Log": "Show your skills and amaze the world",
+    "DontHave": "Are you an artist or organizer?",
+    "Sign": "Sign up here",
+    "name": "Organizer name",
+    "lastName": "Last name",
+    "fechaN": "Birth date",
+    "enterRegistro": "Register",
+    "NameArt": "Music genre",
+    "redesAr": "Social media",
+    "organizador": "Organizer"
   }
 }
