@@ -1,4 +1,32 @@
 {
+  "common": {
+    "language": "Español",
+    "backTo": "Volver al sitio web",
+    "email": "Correo electrónico",
+    "confirmEmail": "Confirma tu correo electrónico",
+    "createPassword": "Crear contraseña",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "remember": "Recuérdame",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "next": "Siguiente",
+    "continueWithGoogle": "Continuar con Google",
+    "or": "O",
+    "lastName": "Apellido",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "createAccount": "Crea tu cuenta",
+    "signUp": "Registrarse",
+    "birthDate": "Fecha de nacimiento",
+    "back": "Atrás",
+    "orContinueWith": "O continuar con:",
+    "user": "Usuario",
+    "userDescription": "Únete a eventos, compra entradas y más...",
+    "artist": "Artista",
+    "artistDescription": "Contacta con organizadores...",
+    "organizer": "Organizador",
+    "organizerDescription": "Crea eventos, contacta con artistas y más..."
+  },
   "Navbar": {
     "title": "¡Hola mundo!",
     "find_event": "Buscar eventos",
@@ -6,7 +34,7 @@
     "find_plans": "Buscar planes",
     "create_plan": "Crear plan",
     "sign_up": "Registrarse",
-    "login": "Ingresar"
+    "login": "Iniciar sesión"
   },
   "UserMenu": {
     "Logout": "Cerrar sesión",
@@ -15,10 +43,10 @@
     "English": "Inglés",
     "Account": "Cuenta",
     "Tickets": "Entradas",
-    "Liked": "Me gustas",
+    "Liked": "Me gusta",
     "Following": "Siguiendo",
-    "Settings": "Ajustes",
-    "Username": "Usuario"
+    "Settings": "Configuración",
+    "Username": "Nombre de usuario"
   },
   "Footer": {
     "faq": "Preguntas frecuentes",
@@ -31,17 +59,48 @@
   },
   "Login": {
     "Welcome": "¡Bienvenido de nuevo!",
-    "Log": "Inicia sesión para comenzar a crear eventos con Meevent",
+    "Log": "Inicia sesión para comenzar a descubrir eventos increíbles",
     "Email": "Correo electrónico",
     "Password": "Contraseña",
-    "Remember": "Recordarme",
+    "Remember": "Recuérdame",
     "ForgotPassword": "¿Olvidaste tu contraseña?",
     "Login": "Iniciar sesión",
-    "OrConnect": "O conecta con",
+    "OrConnect": "O conéctate con",
     "Continue": "Continuar con Google",
     "DontHave": "¿No tienes una cuenta?",
     "Sign": "Regístrate aquí",
     "BackTo": "Volver al sitio web",
     "Language": "Español"
+  },
+  "signUp": {
+    "sign": "Disfruta de los mejores eventos",
+    "artistOrOrganizer": "¿Eres artista u organizador?",
+    "SignUpHere": "Regístrate aquí"
+  },
+  "signUpArtist": {
+    "Welcome": "Bienvenido artista",
+    "Log": "Muestra tu talento y sorprende al mundo",
+    "DontHave": "¿Eres artista u organizador?",
+    "Sign": "Regístrate aquí",
+    "name": "Nombre artístico",
+    "fechaN": "Fecha de nacimiento",
+    "enterRegistro": "Registrarse",
+    "NameArt": "Género musical",
+    "redesAr": "Redes sociales",
+    "organizador": "Organizador"
+  },
+  "signUpOrganizer": {
+    "Welcome": "Bienvenido organizador",
+    "direccion": "Dirección",
+    "Log": "Muestra tus habilidades y sorprende al mundo",
+    "DontHave": "¿Eres artista u organizador?",
+    "Sign": "Regístrate aquí",
+    "name": "Nombre del organizador",
+    "lastName": "Apellido",
+    "fechaN": "Fecha de nacimiento",
+    "enterRegistro": "Registrarse",
+    "NameArt": "Género musical",
+    "redesAr": "Redes sociales",
+    "organizador": "Organizador"
   }
 }
