@@ -123,5 +123,22 @@
     "uploadImage": "Upload image",
     "personalInformation": "Personal information",
     "saveChanges": "Save changes"
+  },
+  "Eventos": {
+    "titleE": "Explore the green coast",
+    "follow": "Follow",
+    "by": "By: ",
+    "overiew": "Overiew",
+    "good": "Good to know",
+    "Location": "Location",
+    "howDo": "How do you want to get there?",
+    "Organized": "Organized by",
+    "Followers": "Followers",
+    "Events": "Events",
+    "Hosting": "Hosting",
+    "Contact": "Contact",
+    "Report": "Report this event",
+    "Highlights": "Highlights",
+    "Get tickets": "Get tickets"
   }
 }
