@@ -24,7 +24,7 @@ export const SignUpCardContent = () => {
     return (
         <CardContent className="my-18">
             <CardTitle className="mb-2 sm:text-5xl text-4xl md:text-4xl md:text-center">{c("createAccount")}</CardTitle>
-            <CardDescription className="md:text-center mb-6">{t("sign")}</CardDescription>
+            <CardDescription className="md:text-center mb-6">{t("cardSubtitle")}</CardDescription>
 
             <div className="w-full">
 
