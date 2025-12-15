@@ -30,30 +30,41 @@ export const Evento = () => {
             <div className='w-full mb-4'>
                 <img src="./limaEvent.jpg" alt="asd" />
             </div>
-            <CardHeader className='gap-5 mb-5'>
-                <CardTitle className='font-black text-2xl'>{t('titleE')}{/* Nombre event */}</CardTitle>
-                <div className='flex gap-2 items-center'>
-                    <Avatar>
-                        <AvatarImage src="./gatoPerfil.jpg" />
-                        <AvatarFallback>??</AvatarFallback>
-                    </Avatar>
+            <CardHeader className='gap-5 mb-5 xl:grid-cols-2 xl:items-center'>
+                <div className='gap-5 grid'>
+                    <CardTitle className='font-black text-2xl'>{t('titleE')}{/* Nombre event */}</CardTitle>
+                    <div className='flex gap-2 items-center'>
+                        <Avatar>
+                            <AvatarImage src="./gatoPerfil.jpg" />
+                            <AvatarFallback>??</AvatarFallback>
+                        </Avatar>
+                        <div>
+                            <p>{t('by')}Rutas OrtegaEvents{/* Nombre del organizador */}</p>
+                        </div>
+                        <Button variant="outline">{t('follow')}</Button>
+                    </div>
+
+                    <div className='flex flex-col gap-2'>
+                        <div className='flex gap-2'>
+                            <MapPin className='w-5' />
+                            <p>Av. Marquez civil{/* Direccion mas na */}</p>
+                        </div>
+                        <div className='flex gap-2'>
+                            <Calendar className='w-5' />
+                            <p>Dec 27 from 8am to 8pm GMT-5{/* Direccion mas na */}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <Card className="rounded-2xl border-t bg-background hidden xl:block">
+                <CardHeader className="flex items-center justify-between">
                     <div>
-                        <p>{t('by')}Rutas OrtegaEvents{/* Nombre del organizador */}</p>
+                        <p className="font-semibold">$50</p>
+                        <CardDescription>Dec 27 - 8:00 AM GMT-5</CardDescription>
                     </div>
-                    <Button variant="outline">{t('follow')}</Button>
-                </div>
-
-                <div className='flex flex-col gap-2'>
-                    <div className='flex gap-2'>
-                        <MapPin className='w-5' />
-                        <p>Av. Marquez civil{/* Direccion mas na */}</p>
-                    </div>
-                    <div className='flex gap-2'>
-                        <Calendar className='w-5' />
-                        <p>Dec 27 from 8am to 8pm GMT-5{/* Direccion mas na */}</p>
-                    </div>
-
-                </div>
+                    <Button>{t('Get tickets')}</Button>
+                </CardHeader>
+            </Card>
             </CardHeader>
 
             <FieldSeparator />
@@ -84,15 +95,17 @@ export const Evento = () => {
             <CardHeader className="mt-5 mb-5">
                 <CardTitle className='text-2xl'>{t('good')}</CardTitle>
 
-                <Carousel opts={{ align: "start" }} className="relative w-full max-w-sm">
-                    <CarouselContent className="w-52">
+                <Carousel opts={{ align: "start" }} className="relative w-full">
+                    <CarouselContent className="w-52 
+                    sm:w-72
+                    md:w-full">
                         {carouselItems.map((item) => (
                             <CarouselItem
                                 key={item.id}
                                 className="md:basis-1/2 lg:basis-1/3"
                             >
                                 <div className="p-1">
-                                    <Card>
+                                    <Card className='md:h-56'>
                                         <CardContent className="flex aspect-square flex-col items-start justify-start p-6 gap-3">
                                             <span className="font-semibold">
                                                 {item.title}
@@ -116,35 +129,45 @@ export const Evento = () => {
 
             <CardHeader className='mt-5 mb-5'>
                 <CardTitle className='text-2xl mb-2'>{t('Location')}</CardTitle>
-                <CardDescription className='font-semibold text-black'>The mansion Mateo Pumacahua</CardDescription>
-                <CardDescription>Av. Marquez civil</CardDescription>
-                <CardDescription className='mb-5'>Chorrillos, Provincia de Lima 34012</CardDescription>
-                <img src="./maps.png" alt="" className='rounded-2xl' />
-                <div>
-                    <CardTitle className='mt-4 mb-5'>{t('howDo')}</CardTitle>
-                    <div className='mt-3 flex justify-around'>
-                        <div className='flex flex-col gap-5'>
-                            <div className='flex gap-2'>
-                                <CarFront />
-                                <CardDescription>Driving</CardDescription>
-                            </div>
-                            <div className='flex gap-2'>
-                                <BusFront />
-                                <CardDescription>Public transport</CardDescription>
-                            </div>
+                <div className='md:flex md:gap-2'>
+
+                    <div className='md:w-[50%]'>
+                        <div className='grid gap-2'>
+                            <CardDescription className='font-semibold text-black'>The mansion Mateo Pumacahua</CardDescription>
+                            <CardDescription>Av. Marquez civil</CardDescription>
+                            <CardDescription className='mb-5'>Chorrillos, Provincia de Lima 34012</CardDescription>
                         </div>
 
-                        <div className='flex flex-col gap-5'>
-                            <div className='flex gap-2'>
-                                <Bike />
-                                <CardDescription>Biking</CardDescription>
-                            </div>
-                            <div className='flex gap-2'>
-                                <Footprints />
-                                <CardDescription>Walking</CardDescription>
+                        <img src="./maps.png" alt="" className='rounded-2xl w-full md:hidden' />
+                        <div>
+                            <CardTitle className='mt-4 mb-5'>{t('howDo')}</CardTitle>
+                            <div className='mt-3 flex justify-around'>
+                                <div className='flex flex-col gap-5'>
+                                    <div className='flex gap-2'>
+                                        <CarFront />
+                                        <CardDescription>Driving</CardDescription>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <BusFront />
+                                        <CardDescription>Public transport</CardDescription>
+                                    </div>
+                                </div>
+
+                                <div className='flex flex-col gap-5'>
+                                    <div className='flex gap-2'>
+                                        <Bike />
+                                        <CardDescription>Biking</CardDescription>
+                                    </div>
+                                    <div className='flex gap-2'>
+                                        <Footprints />
+                                        <CardDescription>Walking</CardDescription>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <img src="./maps.png" alt="" className='rounded-2xl w-auto hidden md:block md:w-[50%]' />
                 </div>
             </CardHeader>
 
@@ -152,20 +175,28 @@ export const Evento = () => {
 
             <CardHeader className='mt-5 mb-5'>
                 <CardTitle className='text-2xl mb-2'>{t('Organized')}</CardTitle>
-                <Card className='bg-gray-100 border-none'>
-                    <CardHeader>
-                        <div className='flex justify-center mb-3'>
+                <Card className='bg-gray-100 border-none 
+                md:h-auto'>
+                    <CardHeader className='
+                    md:flex 
+                    md:gap-5
+                    md:items-center
+                    md:justify-around'>
+                        <div className='flex justify-center mb-3
+                        md:m-0'>
                             <Avatar className='w-20 h-20'>
                                 <AvatarImage src="./gatoPerfil.jpg" alt="@shadcn" />
                                 <AvatarFallback>CN</AvatarFallback>
                             </Avatar>
                         </div>
                         <div>
-                            <div className='mb-3 text-center'>
+                            <div className='mb-3 text-center
+                            md:text-start'>
                                 <CardTitle>Rutas OrtegaEvets{/* Nombre de organizador */}</CardTitle>
                             </div>
 
-                            <div className='flex justify-evenly'>
+                            <div className='flex justify-evenly 
+                            md:gap-10'>
                                 <div>
                                     <CardDescription>{t('Followers')}</CardDescription>
                                     <p className='font-semibold'>1.6k</p>
@@ -180,9 +211,15 @@ export const Evento = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='flex justify-evenly mt-2'>
-                            <Button variant="outline" className='w-[40%]'>{t('Contact')}</Button>
-                            <Button className='w-[40%]'>{t('follow')}</Button>
+                        <div className='flex justify-evenly mt-2
+                        md:mt-0
+                        md:gap-2
+                        md:grid
+                        md:grid-cols-2 '>
+                            <Button variant="outline" className='w-[40%]
+                            md:w-auto'>{t('Contact')}</Button>
+                            <Button className='w-[40%]
+                            md:w-auto'>{t('follow')}</Button>
                         </div>
                     </CardHeader>
                 </Card>
