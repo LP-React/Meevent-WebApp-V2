@@ -4,7 +4,7 @@ import "./globals.css";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { ThemeProvider } from "@/components/Theme-Provider";
+import { ThemeProvider } from "@/components/providers/Theme-Provider";
 import { Navbar } from "@/components/Navbar";
 import { cookies } from "next/headers";
 import { Providers } from "@/components/providers/Providers";

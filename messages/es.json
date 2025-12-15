@@ -7,7 +7,7 @@
     "createPassword": "Crear contraseña",
     "password": "Contraseña",
     "confirmPassword": "Confirmar contraseña",
-    "remember": "Recuérdame",
+    "remember": "Recordarme",
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "next": "Siguiente",
     "continueWithGoogle": "Continuar con Google",
@@ -18,14 +18,20 @@
     "createAccount": "Crea tu cuenta",
     "signUp": "Registrarse",
     "birthDate": "Fecha de nacimiento",
-    "back": "Atrás",
-    "orContinueWith": "O continuar con:",
+    "back": "Volver",
+    "orContinueWith": "O continúa con:",
     "user": "Usuario",
     "userDescription": "Únete a eventos, compra entradas y más...",
     "artist": "Artista",
-    "artistDescription": "Contacta con organizadores...",
+    "artistDescription": "Conecta con organizadores...",
     "organizer": "Organizador",
-    "organizerDescription": "Crea eventos, contacta con artistas y más..."
+    "organizerDescription": "Crea eventos, conecta con artistas y más...",
+    "welcomeBack": "¡Bienvenido de nuevo!",
+    "orConnect": "O conéctate con",
+    "signUpHere": "Regístrate aquí",
+    "meevent": "Meevent",
+    "login": "Iniciar sesión",
+    "continue": "Continuar"
   },
   "Navbar": {
     "title": "¡Hola mundo!",
@@ -57,25 +63,19 @@
     "find_plans": "Buscar planes",
     "create_plan": "Crear plan"
   },
-  "Login": {
-    "Welcome": "¡Bienvenido de nuevo!",
-    "Log": "Inicia sesión para comenzar a descubrir eventos increíbles",
-    "Email": "Correo electrónico",
-    "Password": "Contraseña",
-    "Remember": "Recuérdame",
-    "ForgotPassword": "¿Olvidaste tu contraseña?",
-    "Login": "Iniciar sesión",
-    "OrConnect": "O conéctate con",
-    "Continue": "Continuar con Google",
-    "DontHave": "¿No tienes una cuenta?",
-    "Sign": "Regístrate aquí",
-    "BackTo": "Volver al sitio web",
-    "Language": "Español"
+  "login": {
+    "loginTitle": "Inicia sesión para comenzar a crear videos con Evo",
+    "loginInfo": "Desde clips rápidos para redes sociales hasta videos de larga duración, nuestro potente editor te permite trabajar en distintos dispositivos.",
+    "dontHaveAnAccount": "¿No tienes una cuenta?",
+    "cardTitle": "¡Bienvenido de nuevo!",
+    "cardSubtitle": "Inicia sesión aquí"
   },
   "signUp": {
-    "sign": "Disfruta de los mejores eventos",
-    "artistOrOrganizer": "¿Eres artista u organizador?",
-    "SignUpHere": "Regístrate aquí"
+    "loginTitle": "Regístrate para comenzar a crear videos con Evo",
+    "loginInfo": "Desde clips rápidos para redes sociales hasta videos de larga duración, nuestro potente editor te permite trabajar en distintos dispositivos.",
+    "dontHaveAnAccount": "¿No tienes una cuenta?",
+    "cardTitle": "¡Bienvenido!",
+    "cardSubtitle": "Regístrate aquí"
   },
   "signUpArtist": {
     "Welcome": "Bienvenido artista",

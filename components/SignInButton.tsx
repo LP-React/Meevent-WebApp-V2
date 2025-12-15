@@ -6,11 +6,11 @@ import { Button } from "./ui/button";
 
 export function SignIn() {
 
-    const t = useTranslations('Login')
+    const c = useTranslations('common')
 
     return (
         <Button variant="outline" className="w-full rounded-full h-12 cursor-pointer" onClick={() => signIn("google", {redirectTo: "/"})}>
-            <Chromium />{t("Continue")}
+            <Chromium />{c("continue")}
         </Button>
     )
 }
