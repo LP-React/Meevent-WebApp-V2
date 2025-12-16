@@ -1,17 +1,15 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 const BASE_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    process.env.NEXT_PUBLIC_API_URL || "https://localhost:7292";
 
 const api = axios.create({
     baseURL: BASE_URL,
     headers: {
         "Content-Type": "application/json",
     },
-    // En SSR no hay localStorage, así que no guardes tokens aquí directamente
 });
 
-// ✅ Interceptor de errores (opcional)
 api.interceptors.response.use(
     (response) => response,
     (error) => {

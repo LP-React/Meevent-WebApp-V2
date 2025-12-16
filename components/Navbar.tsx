@@ -1,14 +1,11 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { ArrowRight, LogOut, Moon, Sun } from 'lucide-react';
-import { useTheme } from "next-themes";
+import { Moon, Sun } from 'lucide-react';
 import { Link, usePathname } from "@/i18n/navigations";
 import Image from "next/image";
-import { setCookie } from "cookies-next";
-import { useState } from "react";
 import { UserMenu } from "./UserMenu";
-import { SessionProvider, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { Button } from "./ui/button";
 import { useIconTheme } from "./hooks/useIconTheme";
 
@@ -27,6 +24,8 @@ export const Navbar = ({ cookieTheme }: Props) => {
 
     const { status } = useSession()
     const { iconTheme, toggleTheme } = useIconTheme(cookieTheme)
+    const pathname = usePathname();
+
 
     const t = useTranslations('Navbar')
 
@@ -56,8 +55,8 @@ export const Navbar = ({ cookieTheme }: Props) => {
                         <UserMenu />
                         :
                         <div className="flex justify-between items-center w-[165px]">
-                            <Link href="/login" className="text-foreground transition duration-200 hover:text-red-500 text-[14px] font-medium">{t('login')}</Link>
-                            <Link href="/signup">
+                            <Link href={`/login?redirect=${encodeURIComponent(pathname)}`} className="text-foreground transition duration-200 hover:text-red-500 text-[14px] font-medium">{t('login')}</Link>
+                            <Link href={`/signup?redirect=${encodeURIComponent(pathname)}`}>
                                 <Button className="text-background transition duration-200 hover:bg-red-500 hover:text-foreground cursor-pointer" size="sm">
                                     {t('sign_up')}
                                 </Button>
