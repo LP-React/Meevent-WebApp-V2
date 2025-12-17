@@ -11,17 +11,17 @@ import { EventGood } from './EventGood'
 export const Evento = () => {
 
     return (
-        <div className="w-full min-h-dvh pb-28">
+        <div className="w-full min-h-dvh pb-28 mt-20">
             <EventBanner />
             <EventHeader />
 
             <FieldSeparator />
 
             <EventOverview />
-            
+
             <FieldSeparator />
 
-            <EventGood/>
+            <EventGood />
 
             <FieldSeparator />
 

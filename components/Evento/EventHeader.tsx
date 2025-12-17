@@ -1,58 +1,57 @@
 import { useTranslations } from 'next-intl'
-import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Button } from '../ui/button'
 import { Calendar, MapPin } from 'lucide-react'
 import { Card, CardDescription, CardHeader } from '../ui/card'
 
 export const EventHeader = () => {
-    const t = useTranslations('Eventos')
+  const t = useTranslations('Eventos')
   return (
     <section className="grid gap-6 mb-8 xl:grid-cols-2 xl:items-center">
 
-    {/* LEFT */}
-    <div className="grid gap-5">
-      <h1 className="text-2xl font-black">
-        {/* Nombre del evento */}
-      </h1>
+      {/* LEFT */}
+      <div className="grid gap-5">
+        <h1 className="text-2xl font-black">
+          {/* Nombre del evento */}
+        </h1>
 
-      <div className="flex items-center gap-3">
-        <Avatar>
-          <AvatarImage src="" /> {/* IMAGEN ORGANIZADOR */}
-          <AvatarFallback>EV</AvatarFallback>
-        </Avatar>
+        <div className="flex items-center gap-3">
+          <Avatar>
+            <AvatarImage src="" /> {/* IMAGEN ORGANIZADOR */}
+            <AvatarFallback>EV</AvatarFallback>
+          </Avatar>
 
-        <p>{t("by")} {/* Organizador */}</p>
+          <p>{t("by")} {/* Organizador */}</p>
 
-        <Button variant="outline">
-          {t("follow")}
-        </Button>
+          <Button variant="outline">
+            {t("follow")}
+          </Button>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2">
+            <MapPin className="w-5" />
+            <p>{/* Dirección del evento */}</p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Calendar className="w-5" />
+            <p>{/* HORA Y FECHA NOSE XD */}</p>
+          </div>
+        </div>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2">
-          <MapPin className="w-5" />
-          <p>{/* Dirección del evento */}</p>
-        </div>
+      {/* RIGHT – TICKET DESKTOP */}
+      <Card className="hidden xl:block rounded-2xl">
+        <CardHeader className="flex flex-row items-center justify-between">
+          <div>
+            <p className="font-semibold">{/* Precio */}</p>
+            <CardDescription>{/* Hora y fecha del evento */}</CardDescription>
+          </div>
+          <Button>{t("Get tickets")}</Button>
+        </CardHeader>
+      </Card>
 
-        <div className="flex items-center gap-2">
-          <Calendar className="w-5" />
-          <p>{/* HORA Y FECHA NOSE XD */}</p>
-        </div>
-      </div>
-    </div>
-
-    {/* RIGHT – TICKET DESKTOP */}
-    <Card className="hidden xl:block rounded-2xl">
-      <CardHeader className="flex flex-row items-center justify-between">
-        <div>
-          <p className="font-semibold">{/* Precio */}</p>
-          <CardDescription>{/* Hora y fecha del evento */}</CardDescription>
-        </div>
-        <Button>{t("Get tickets")}</Button>
-      </CardHeader>
-    </Card>
-
-  </section>
+    </section>
   )
 }

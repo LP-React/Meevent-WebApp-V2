@@ -1,5 +1,3 @@
-
-
 export const EventBanner = () => {
   return (
     <div className="w-full h-64 overflow-hidden rounded-2xl bg-muted">
