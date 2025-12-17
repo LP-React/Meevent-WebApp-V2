@@ -16,12 +16,10 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Link } from "@/i18n/navigations"
 import { CheckCheck, ChevronDown, Heart, LogOut, Settings, Ticket } from "lucide-react"
-import Image from "next/image"
 import { Skeleton } from "./ui/skeleton"
 import { deleteCookie } from "cookies-next"
 import { useTranslations } from "next-intl"
 import { signOut } from "next-auth/react"
-import { ThemeButton } from "./utils/ThemeButton"
 
 const menuOptions = [
     {
@@ -53,7 +51,7 @@ const languageOptions = [
 ]
 
 interface Props {
-    cookieUser: string
+    cookieUser: any
     cookieTheme: string
 }
 
@@ -61,6 +59,9 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
 
     const t = useTranslations('UserMenu');
     const c = useTranslations('common');
+
+    console.log(cookieUser);
+    
 
     // TODO: with auth.js
     // const { data: session, status } = useSession();
