@@ -62,9 +62,6 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
     const t = useTranslations('UserMenu');
     const c = useTranslations('common');
 
-
-    console.log(cookieTheme);
-
     // TODO: with auth.js
     // const { data: session, status } = useSession();
 
@@ -123,7 +120,7 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
                 </DropdownMenuGroup>
 
                 <DropdownMenuSeparator />
-                
+
                 {/* 
                 <DropdownMenuGroup>
                     <DropdownMenuItem className="justify-between cursor-pointer">
