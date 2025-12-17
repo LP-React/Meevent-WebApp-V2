@@ -1,7 +1,7 @@
 import { CardFooter } from '../ui/card'
-import { SignIn } from '../SignInButton'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigations'
+import { SignIn } from '../SignInButton'
 
 export const LoginCardFooter = async () => {
 

@@ -11,13 +11,11 @@ import { useState } from "react"
 import { AuthService } from "@/services/auth.service"
 import { Button } from "../ui/button"
 import { useSearchParams } from "next/navigation"
+import { setCookie } from "cookies-next"
 
 export const LoginCardContent = () => {
 
     const [showPassword, setShowPassword] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-
 
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -34,8 +32,6 @@ export const LoginCardContent = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setError(null);
-        setLoading(true);
 
         const formData = new FormData(e.currentTarget);
 
@@ -47,17 +43,14 @@ export const LoginCardContent = () => {
                 correo_electronico: email,
                 contrasena: password,
             });
-
             if (resp.exitoso) {
+                setCookie("userData", resp.usuario)
                 router.replace(redirectTo);
             }
-
             console.log("Login OK:", resp);
         } catch (err: any) {
-            setError(err.message);
+            console.log(err);
 
-        } finally {
-            setLoading(false);
         }
     };
 

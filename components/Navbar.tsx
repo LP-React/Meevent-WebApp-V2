@@ -1,13 +1,11 @@
-"use client"
-
-import { useTranslations } from "next-intl"
-import { Moon, Sun } from 'lucide-react';
-import { Link, usePathname } from "@/i18n/navigations";
 import Image from "next/image";
+
+import { Link } from "@/i18n/navigations";
+import { getTranslations } from "next-intl/server";
+
 import { UserMenu } from "./UserMenu";
-import { useSession } from "next-auth/react";
-import { Button } from "./ui/button";
-import { useIconTheme } from "./hooks/useIconTheme";
+import { ThemeButton } from "./utils/ThemeButton";
+import { LoginSignup } from "./Navbar/LoginSignup";
 
 const navLinks = [
     { href: "/find-events", label: "find_event" },
@@ -17,17 +15,15 @@ const navLinks = [
 ];
 
 interface Props {
-    cookieTheme: string
+    cookieTheme: string,
+    cookieUser: string
 }
 
-export const Navbar = ({ cookieTheme }: Props) => {
+export const Navbar = async ({ cookieTheme, cookieUser }: Props) => {
 
-    const { status } = useSession()
-    const { iconTheme, toggleTheme } = useIconTheme(cookieTheme)
-    const pathname = usePathname();
-
-
-    const t = useTranslations('Navbar')
+    // TODO: AUTHJS
+    // const { status } = useSession()
+    const t = await getTranslations('Navbar')
 
 
     return (
@@ -45,23 +41,12 @@ export const Navbar = ({ cookieTheme }: Props) => {
                     ))}
                 </div>
 
-                {iconTheme == 'light' ?
-                    <Moon className="cursor-pointer transition text-foreground duration-200 hover:text-red-500" onClick={toggleTheme} /> :
-                    <Sun className="cursor-pointer transition text-foreground duration-200 hover:text-red-500" onClick={toggleTheme} />
-                }
+                <ThemeButton themeCookie={cookieTheme} variant={"ghost"} />
 
                 <div className="h-full flex items-center">
-                    {status == "authenticated" || status == "loading" ?
-                        <UserMenu />
-                        :
-                        <div className="flex justify-between items-center w-[165px]">
-                            <Link href={`/login?redirect=${encodeURIComponent(pathname)}`} className="text-foreground transition duration-200 hover:text-red-500 text-[14px] font-medium">{t('login')}</Link>
-                            <Link href={`/signup?redirect=${encodeURIComponent(pathname)}`}>
-                                <Button className="text-background transition duration-200 hover:bg-red-500 hover:text-foreground cursor-pointer" size="sm">
-                                    {t('sign_up')}
-                                </Button>
-                            </Link>
-                        </div>
+                    {/* status == "authenticated" || status == "loading" ||  */cookieUser ?
+                        <UserMenu cookieUser={cookieUser} cookieTheme={cookieTheme}/> :
+                        <LoginSignup />
                     }
                 </div>
 
