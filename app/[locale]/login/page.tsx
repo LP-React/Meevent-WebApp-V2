@@ -2,6 +2,8 @@ import { LoginForm } from "@/components/Login/LoginForm"
 import { LoginInfo } from '../../../components/Login/LoginInfo';
 
 export default function LoginPage() {
+
+  
   return (
     <div className="
       bg-[url('/fondo.jpg')] bg-black/55 bg-blend-multiply bg-cover 

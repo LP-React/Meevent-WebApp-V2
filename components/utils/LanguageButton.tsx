@@ -1,8 +1,8 @@
 "use client"
 import { Link, usePathname } from "@/i18n/navigations"
-import { Button } from "./ui/button"
 import { Languages } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl";
+import { Button } from "../ui/button";
 
 
 export const LanguageButton = () => {

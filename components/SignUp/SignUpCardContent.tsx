@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react'
 import { CardContent, CardDescription, CardTitle } from '../ui/card'
 import { EmailVerificationForm } from './EmailVerificationForm'
-import { SignIn } from '../SignInButton'
 import { useTranslations } from 'next-intl'
 import { UserSelectProfileForm } from './UserSelectProfileForm'
 import { UserDetailsForm } from './UserDetailsForm'
+import { SignIn } from '../SignInButton'
 
 export const SignUpCardContent = () => {
 

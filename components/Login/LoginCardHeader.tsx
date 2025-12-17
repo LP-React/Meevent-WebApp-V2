@@ -1,10 +1,10 @@
 import { Link } from "@/i18n/navigations"
 import { CardHeader } from "../ui/card"
 import { ArrowLeft } from "lucide-react"
-import { ThemeButton } from "../ThemeButton"
-import { LanguageButton } from "../LanguageButton"
 import { cookies } from "next/headers"
 import { getTranslations } from "next-intl/server"
+import { ThemeButton } from "../utils/ThemeButton"
+import { LanguageButton } from "../utils/LanguageButton"
 
 export const LoginCardHeader = async () => {
 
@@ -13,6 +13,8 @@ export const LoginCardHeader = async () => {
 
     const c = await getTranslations('common')
 
+    
+
     return (
         <CardHeader className="flex justify-between items-center">
             <Link href="/" className="xl:hidden lg:hidden flex">
@@ -20,7 +22,7 @@ export const LoginCardHeader = async () => {
                 {c("backTo")}
             </Link>
             <div className="flex justify-between gap-2 md:gap-2 sm:gap-2 lg:w-full xl:w-full">
-                <ThemeButton themeCookie={themeCookie} />
+                <ThemeButton themeCookie={themeCookie} variant={"outline"} />
                 <LanguageButton />
             </div>
         </CardHeader>

@@ -31,7 +31,12 @@
     "signUpHere": "Sign up here",
     "meevent": "Meevent",
     "login": "Login",
-    "continue": "Continue"
+    "continue": "Continue",
+    "theme": "Theme",
+    "dark": "Dark",
+    "light": "Light",
+    "logout": "Logout",
+    "mode": "Mode"
   },
   "Navbar": {
     "title": "Hello world!",

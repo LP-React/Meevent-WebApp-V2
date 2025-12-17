@@ -5,7 +5,6 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { ThemeProvider } from "@/components/providers/Theme-Provider";
-import { Navbar } from "@/components/Navbar";
 import { cookies } from "next/headers";
 import { Providers } from "@/components/providers/Providers";
 
@@ -30,12 +29,13 @@ type Props = {
 };
 
 export default async function RootLayout({ children, params }: Props) {
-  
+
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
+  /* COOKIES */
   const cookieStore = await cookies();
   const themeCookie = cookieStore.get("theme")?.value || "system";
 

@@ -5,10 +5,14 @@ export default async function WithNavbarLayout({ children }: { children: React.R
 
     const cookieStore = await cookies();
     const themeCookie = cookieStore.get("theme")?.value || "system";
+    const raw = cookieStore.get("userData")?.value;
+    const userData = raw ? JSON.parse(raw) : null;
+
+
 
     return (
         <>
-            <Navbar cookieTheme={themeCookie} />
+            <Navbar cookieTheme={themeCookie} cookieUser={userData} />
             {children}
         </>
     );
