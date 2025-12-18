@@ -36,7 +36,10 @@
     "dark": "Dark",
     "light": "Light",
     "logout": "Logout",
-    "mode": "Mode"
+    "mode": "Mode",
+    "settings": "Settings",
+    "profile": "Profile",
+    "security": "Security"
   },
   "Navbar": {
     "title": "Hello world!",
@@ -110,5 +113,8 @@
     "NameArt": "Music genre",
     "redesAr": "Social media",
     "organizador": "Organizer"
+  },
+  "settingsLayout": {
+    "description": "Lorem ipsum here idk"
   }
 }

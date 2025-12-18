@@ -1,8 +1,28 @@
 import { http } from "@/lib/http";
-import { GetUsersResponse, UsuarioApi } from "@/types/api/users";
+import { GetUsersResponse, PatchUserRequest, PatchUserResponse, UsuarioApi } from "@/types/api/users";
+import { mapUsuarioFromApi } from "@/types/mappers/user.mapper";
 
 export const UsersService = {
-    getAll: () => http<GetUsersResponse>("/api/Usuarios/ListarUsuarios"),
-    getById: (id: number) => http<UsuarioApi>(`/api/Usuarios/Buscar${id}`),
-    getByEmail: (email: string) => http<UsuarioApi>(`/api/Usuarios/Buscar-Por-correo/${email}`)
+    getAll: () =>
+        http<GetUsersResponse>("/api/Usuarios/ListarUsuarios"),
+
+    getById: (id: number) =>
+        http<UsuarioApi>(`/api/Usuarios/Buscar${id}`),
+
+    getByEmail: (email: string) =>
+        http<UsuarioApi>(`/api/Usuarios/Buscar-Por-correo/${email}`),
+
+    editUser: async (id: number, payload: PatchUserRequest) => {
+
+        const resp = await http<PatchUserResponse>(`/api/Usuarios/editarUsuario/${id}`, {
+            method: "POST",
+            data: payload
+        })
+
+        return {
+            success: resp.exitoso,
+            message: resp.mensaje,
+            updated_user: mapUsuarioFromApi(resp.usuarioActualizado)
+        }
+    }
 };
