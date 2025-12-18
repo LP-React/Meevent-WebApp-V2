@@ -11,13 +11,12 @@ type EmailVerificationData = {
 };
 
 interface Props {
-    onSubmit: (data: EmailVerificationData) => void;
+    onSubmit: (email: string) => void;
 }
 
 export const EmailVerificationForm = ({ onSubmit }: Props) => {
 
     const c = useTranslations("common");
-    const [isValidating, setIsValidating] = useState(false);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -25,11 +24,9 @@ export const EmailVerificationForm = ({ onSubmit }: Props) => {
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData.entries()) as EmailVerificationData;
 
-        if (data.email !== data.confirmEmail) {
-            return;
-        }
+        if (data.email !== data.confirmEmail) return;
 
-        onSubmit(data);
+        onSubmit(data.email);
     };
 
     return (
@@ -58,7 +55,7 @@ export const EmailVerificationForm = ({ onSubmit }: Props) => {
                 />
             </div>
 
-            <Button type="submit" className='rounded-full mt-5 h-10 w-35 col-span-2 justify-self-center'>
+            <Button type="submit" className='rounded-full mt-5 h-10 w-35 col-span-2 justify-self-center cursor-pointer'>
                 {c("next")}
             </Button>
         </form>

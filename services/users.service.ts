@@ -6,5 +6,3 @@ export const UsersService = {
     getById: (id: number) => http<UsuarioApi>(`/api/Usuarios/Buscar${id}`),
     getByEmail: (email: string) => http<UsuarioApi>(`/api/Usuarios/Buscar-Por-correo/${email}`)
 };
-
-

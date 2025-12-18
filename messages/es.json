@@ -71,11 +71,14 @@
     "cardSubtitle": "Inicia sesión aquí"
   },
   "signUp": {
-    "loginTitle": "Regístrate para comenzar a crear videos con Evo",
-    "loginInfo": "Desde clips rápidos para redes sociales hasta videos de larga duración, nuestro potente editor te permite trabajar en distintos dispositivos.",
-    "dontHaveAnAccount": "¿No tienes una cuenta?",
-    "cardTitle": "¡Bienvenido!",
-    "cardSubtitle": "Regístrate aquí"
+    "loginTitle": "Log in to start crasfsd ags viods whit evo",
+    "loginInfo": "From quick social media clips to full-length videos our powerful editor lets you work across devices.",
+    "dontHaveAnAccount": "Don't have an account?",
+    "cardTitle": "Welcome back!",
+    "cardSubtitle": "Login here",
+    "accountCreated": "Account created!",
+    "signupRedirect": "You will redirect to: ",
+    "inSeconds": "in {seconds} seconds"
   },
   "signUpArtist": {
     "Welcome": "Bienvenido artista",

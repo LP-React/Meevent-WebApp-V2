@@ -1,3 +1,5 @@
+"use client"
+
 import { useTranslations } from "next-intl";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -96,7 +98,7 @@ export const UserDetailsForm = ({ onSubmit }: Props) => {
                 </div>
             ))}
 
-            <Button type="submit" className='rounded-full h-10 mt-5 w-35 col-span-2 place-self-center'>
+            <Button type="submit" className='rounded-full h-10 mt-5 w-35 col-span-2 place-self-center cursor-pointer'>
                 {c("signUp")}
             </Button>
         </form>
