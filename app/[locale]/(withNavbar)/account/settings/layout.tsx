@@ -14,10 +14,8 @@ export default async function SettingsLayout({ children }: { children: React.Rea
 
     return (
         <main className="mt-18 w-[80%] h-[85dvh] m-auto">
-
             <div className="w-full h-full grid grid-cols-[1fr_4fr] gap-2">
                 <SettingsSidebar />
-
                 <div className="border-l-2 pl-3">
                     {children}
                 </div>

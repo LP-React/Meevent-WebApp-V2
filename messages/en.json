@@ -39,7 +39,8 @@
     "mode": "Mode",
     "settings": "Settings",
     "profile": "Profile",
-    "security": "Security"
+    "security": "Security",
+    "edit": "Edit"
   },
   "Navbar": {
     "title": "Hello world!",
