@@ -29,7 +29,7 @@ export const UsersService = {
 
     editUser: async (id: number, payload: PatchUserRequest) =>
         http<PatchUserResponse>(`/api/Usuarios/editarUsuario/${id}`, {
-            method: "POST",
+            method: "PATCH",
             data: payload
         })
 

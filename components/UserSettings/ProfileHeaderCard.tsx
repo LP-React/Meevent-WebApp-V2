@@ -1,9 +1,8 @@
 import { UsuarioApi } from "@/types/api/users"
 import { Card, CardContent } from "../ui/card"
-import { Button } from "../ui/button"
-import { Pencil } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { getTranslations } from "next-intl/server"
+import { EditProfileDialog } from "./EditProfileDialog"
 
 interface Props {
     user: UsuarioApi,
@@ -32,10 +31,7 @@ export const ProfileHeaderCard = async ({ user }: Props) => {
                     </div>
                 </div>
 
-                <Button variant="outline" size="sm">
-                    <Pencil className="mr-2 h-4 w-4" />
-                    {c("edit")}
-                </Button>
+                <EditProfileDialog user={user} label={c("edit")} />
             </CardContent>
         </Card>
     )

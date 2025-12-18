@@ -117,5 +117,9 @@
   },
   "settingsLayout": {
     "description": "Lorem ipsum here idk"
+  },
+  "settingsPage": {
+    "editPicture": "Edit profile picture",
+    "uploadImage": "Upload image"
   }
 }
