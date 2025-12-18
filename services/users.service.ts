@@ -12,17 +12,25 @@ export const UsersService = {
     getByEmail: (email: string) =>
         http<UsuarioApi>(`/api/Usuarios/Buscar-Por-correo/${email}`),
 
-    editUser: async (id: number, payload: PatchUserRequest) => {
+    // WITH MAPPER
+    // editUser: async (id: number, payload: PatchUserRequest) => {
 
-        const resp = await http<PatchUserResponse>(`/api/Usuarios/editarUsuario/${id}`, {
+    //     const resp = await http<PatchUserResponse>(`/api/Usuarios/editarUsuario/${id}`, {
+    //         method: "POST",
+    //         data: payload
+    //     })
+
+    //     return {
+    //         success: resp.exitoso,
+    //         message: resp.mensaje,
+    //         updated_user: mapUsuarioFromApi(resp.usuarioActualizado)
+    //     }
+    // }
+
+    editUser: async (id: number, payload: PatchUserRequest) =>
+        http<PatchUserResponse>(`/api/Usuarios/editarUsuario/${id}`, {
             method: "POST",
             data: payload
         })
 
-        return {
-            success: resp.exitoso,
-            message: resp.mensaje,
-            updated_user: mapUsuarioFromApi(resp.usuarioActualizado)
-        }
-    }
 };

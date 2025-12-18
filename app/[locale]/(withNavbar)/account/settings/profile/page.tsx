@@ -1,4 +1,5 @@
-import { User } from "@/types/domain/user";
+import { ProfileHeaderCard } from "@/components/UserSettings/ProfileHeaderCard";
+import { UsuarioApi } from "@/types/api/users";
 import { cookies } from "next/headers";
 import Image from "next/image";
 
@@ -6,13 +7,25 @@ export default async function ProfilePage() {
 
     const cookieStore = await cookies();
     const raw = cookieStore.get("userData")?.value;
-    const userData: User = raw ? JSON.parse(raw) : null;
+    const userData: UsuarioApi = raw ? JSON.parse(raw) : null;
 
     return (
         <div className="">
+
+            <ProfileHeaderCard userData={userData} />
+
+
             <div>
-                <Image src={userData.url_profile || ""} height={90} width={90} alt={userData.fullname} />
+                <h4></h4>
+
             </div>
-        </div>
+
+            <div>
+                {userData.fecha_nacimiento}
+            </div>
+            <div>
+                {userData.numero_telefono}
+            </div>
+        </div >
     );
 }

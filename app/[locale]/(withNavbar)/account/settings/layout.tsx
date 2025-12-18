@@ -1,3 +1,4 @@
+import { SettingsSidebar } from "@/components/UserSettings/SettingSidebar";
 import { Link } from "@/i18n/navigations";
 import { getTranslations } from "next-intl/server";
 
@@ -11,22 +12,16 @@ export default async function SettingsLayout({ children }: { children: React.Rea
     const c = await getTranslations("common")
     const t = await getTranslations("settingsLayout")
 
-
-
     return (
-        <main className="mt-15">
-            <div>
-                <h1 className="text-3xl">{c("settings")}</h1>
-                <p>{t("description")}</p>
+        <main className="mt-18 w-[80%] h-[85dvh] m-auto">
+
+            <div className="w-full h-full grid grid-cols-[1fr_4fr] gap-2">
+                <SettingsSidebar />
+
+                <div className="border-l-2 pl-3">
+                    {children}
+                </div>
             </div>
-            <div className="grid w-40 justify-center grid-cols-1 grid-rows-2 items-center bg-background">
-                {settingLinks.map((link) => (
-                    <Link key={link.label} href={link.href} className="py-2 px-3">
-                        {c(link.label)}
-                    </Link>
-                ))}
-            </div>
-            {children}
         </main>
     );
 }
