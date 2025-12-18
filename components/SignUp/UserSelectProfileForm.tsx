@@ -5,12 +5,8 @@ import { Button } from "../ui/button";
 import { Building, Star, User } from "lucide-react";
 import { useState } from "react";
 
-type UserProfile = {
-    profile: string;
-};
-
 interface Props {
-    onSubmit: (data: UserProfile) => void;
+    onSubmit: (profile: string) => void;
 }
 
 const profiles = [
@@ -43,7 +39,7 @@ export const UserSelectProfileForm = ({ onSubmit }: Props) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!selectedProfile) return;
-        onSubmit({ profile: selectedProfile });
+        onSubmit(selectedProfile);
     };
 
     return (

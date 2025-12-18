@@ -23,7 +23,6 @@ export const SignUpCardContent = () => {
     const c = useTranslations('common');
     const [step, setStep] = useState(1);
 
-
     const [userData, setUserData] = useState<SignupRequest>({
         correo_electronico: "",
         nombre_completo: "",
@@ -31,7 +30,7 @@ export const SignUpCardContent = () => {
         tipo_usuario: ""
     })
 
-    const verifyEmail = async (email: string) => {
+    const onVerifyEmail = async (email: string) => {
 
         const response = await AuthService.verifyEmail(email);
 
@@ -48,22 +47,33 @@ export const SignUpCardContent = () => {
         setStep(2);
     }
 
-    const signUp = async (data: any) => {
+    const onSelectProfile = async (profile: string) => {
+        setUserData(prev => ({
+            ...prev,
+            tipo_usuario: profile
+        }))
+        setStep(3);
+    }
 
-        const payload = {
+    const onSignUp = async (data: any) => {
+
+        const payloadSignUp = {
             ...userData,
             nombre_completo: `${data.name} ${data.lastName}`,
             contrasena: data.password
         }
 
-        try {
-            await AuthService.signup(payload);
-            const loginResp = await AuthService.login({
-                correo_electronico: payload.correo_electronico,
-                contrasena: payload.contrasena
-            })
+        const payloadLogin = {
+            correo_electronico: payloadSignUp.correo_electronico,
+            contrasena: payloadSignUp.contrasena
+        }
 
+        try {
+            await AuthService.signup(payloadSignUp);
+
+            const loginResp = await AuthService.login(payloadLogin)
             loginResp.exitoso && setCookie("userData", loginResp.usuario)
+
             setStep(4);
 
         } catch (e) { }
@@ -83,19 +93,9 @@ export const SignUpCardContent = () => {
                     <div className={`h-2 rounded-bl-3xl rounded-tr-3xl ${step >= 4 ? "bg-green-300" : "outline"} `} />
                 </div>
 
-                {step === 1 && (<EmailVerificationForm onSubmit={verifyEmail} />)}
-
-                {step === 2 && (<UserSelectProfileForm onSubmit={(data) => {
-                    setUserData(prev => ({
-                        ...prev,
-                        tipo_usuario: data.profile
-                    }))
-                    setStep(3);
-                }} />)
-                }
-
-                {step === 3 && (<UserDetailsForm onSubmit={signUp} />)}
-
+                {step === 1 && (<EmailVerificationForm onSubmit={onVerifyEmail} />)}
+                {step === 2 && (<UserSelectProfileForm onSubmit={onSelectProfile} />)}
+                {step === 3 && (<UserDetailsForm onSubmit={onSignUp} />)}
                 {step === 4 && (<SignUpSuccess />)}
 
                 {step === 1 && (
