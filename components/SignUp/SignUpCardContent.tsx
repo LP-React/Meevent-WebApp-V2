@@ -1,12 +1,21 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { CardContent, CardDescription, CardTitle } from '../ui/card'
-import { EmailVerificationForm } from './EmailVerificationForm'
+import { useState } from 'react'
+
 import { useTranslations } from 'next-intl'
+import { setCookie } from 'cookies-next'
+
+import { SignupRequest } from '@/types/api/auth'
+import { AuthService } from '@/services/auth.service'
+
+import { CardContent, CardDescription, CardTitle } from '../ui/card'
+
+import { EmailVerificationForm } from './EmailVerificationForm'
 import { UserSelectProfileForm } from './UserSelectProfileForm'
 import { UserDetailsForm } from './UserDetailsForm'
+import { SignUpSuccess } from './SignUpSuccess'
 import { SignIn } from '../SignInButton'
+
 
 export const SignUpCardContent = () => {
 
@@ -14,11 +23,51 @@ export const SignUpCardContent = () => {
     const c = useTranslations('common');
     const [step, setStep] = useState(1);
 
-    const [userData, setUserData] = useState({})
 
-    useEffect(() => {
-        console.log(userData);
-    }, [userData])
+    const [userData, setUserData] = useState<SignupRequest>({
+        correo_electronico: "",
+        nombre_completo: "",
+        contrasena: "",
+        tipo_usuario: ""
+    })
+
+    const verifyEmail = async (email: string) => {
+
+        const response = await AuthService.verifyEmail(email);
+
+        if (response) {
+            console.warn("Ya existe una cuenta con el correo: " + email)
+            return
+        }
+
+        setUserData(prev => ({
+            ...prev,
+            correo_electronico: email
+        }))
+
+        setStep(2);
+    }
+
+    const signUp = async (data: any) => {
+
+        const payload = {
+            ...userData,
+            nombre_completo: `${data.name} ${data.lastName}`,
+            contrasena: data.password
+        }
+
+        try {
+            await AuthService.signup(payload);
+            const loginResp = await AuthService.login({
+                correo_electronico: payload.correo_electronico,
+                contrasena: payload.contrasena
+            })
+
+            loginResp.exitoso && setCookie("userData", loginResp.usuario)
+            setStep(4);
+
+        } catch (e) { }
+    }
 
 
     return (
@@ -34,34 +83,20 @@ export const SignUpCardContent = () => {
                     <div className={`h-2 rounded-bl-3xl rounded-tr-3xl ${step >= 4 ? "bg-green-300" : "outline"} `} />
                 </div>
 
-                {step === 1 && (<EmailVerificationForm onSubmit={(data) => {
-                    setUserData(prev => ({
-                        ...prev,
-                        email: data.email
-                    }))
-                    setStep(2);
-                }} />)
-                }
+                {step === 1 && (<EmailVerificationForm onSubmit={verifyEmail} />)}
 
                 {step === 2 && (<UserSelectProfileForm onSubmit={(data) => {
                     setUserData(prev => ({
                         ...prev,
-                        userType: data.profile
+                        tipo_usuario: data.profile
                     }))
                     setStep(3);
                 }} />)
                 }
 
-                {step === 3 && (<UserDetailsForm onSubmit={(data) => {
-                    setUserData(prev => ({
-                        ...prev,
-                        fullname: `${data.name + ' ' + data.lastName}`,
-                        password: data.password
-                    }))
-                    setStep(3);
-                    setStep(3);
-                }} />)
-                }
+                {step === 3 && (<UserDetailsForm onSubmit={signUp} />)}
+
+                {step === 4 && (<SignUpSuccess />)}
 
                 {step === 1 && (
                     <div className='mt-23 flex flex-col items-center justify-center'>

@@ -21,13 +21,13 @@ const profiles = [
         description: "userDescription"
     },
     {
-        id: "artist",
+        id: "artista",
         label: "artist",
         icon: Star,
         description: "artistDescription"
     },
     {
-        id: "organizer",
+        id: "organizador",
         label: "organizer",
         icon: Building,
         description: "organizerDescription"
@@ -72,7 +72,7 @@ export const UserSelectProfileForm = ({ onSubmit }: Props) => {
                 })
             }
 
-            <Button type="submit" className='rounded-full mt-5 h-10 w-35 col-span-1 justify-self-center' disabled={!selectedProfile}>
+            <Button type="submit" className='rounded-full mt-5 h-10 w-35 col-span-1 justify-self-center cursor-pointer' disabled={!selectedProfile}>
                 {c("next")}
             </Button>
         </form>

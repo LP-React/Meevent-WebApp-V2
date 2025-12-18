@@ -1,5 +1,6 @@
 import { http } from "@/lib/http";
-import { LoginRequest, LoginResponse } from "@/types/api/auth";
+import { LoginRequest, LoginResponse, SignupRequest, verifyEmailRequest, verifyEmailResponse } from "@/types/api/auth";
+import { SignInResponse } from "next-auth/react";
 
 export const AuthService = {
     login: (payload: LoginRequest) =>
@@ -7,4 +8,11 @@ export const AuthService = {
             method: "POST",
             data: payload,
         }),
+    signup: (payload: SignupRequest) =>
+        http<SignInResponse>("/api/Usuarios/registrarUsuario", {
+            method: "POST",
+            data: payload,
+        }),
+
+    verifyEmail: (email: string) => http<boolean>(`/api/Usuarios/verificarEmail/${email}`)
 };

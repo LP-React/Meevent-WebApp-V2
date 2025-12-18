@@ -20,7 +20,7 @@ export const SignUpCardHeader = async () => {
                 {c("backTo")}
             </Link>
             <div className="flex justify-between gap-2 md:gap-2 sm:gap-2 lg:w-full xl:w-full">
-                <ThemeButton themeCookie={themeCookie} variant={"outline"}/>
+                <ThemeButton themeCookie={themeCookie} variant={"outline"} size={"icon"}/>
                 <LanguageButton />
             </div>
         </CardHeader>
