@@ -10,30 +10,25 @@ import {
     DialogTrigger,
 } from "../ui/dialog"
 import { Pencil } from "lucide-react"
-import { UsuarioApi } from "@/types/api/users"
-import { UploadAvatarInput } from "../utils/UploadAvatarInput"
+import { PatchUserRequest, UsuarioApi } from "@/types/api/users"
 import { useTranslations } from "next-intl"
 import { UsersService } from "@/services/users.service"
 import { useRouter } from "@/i18n/navigations"
 import { setCookie } from "cookies-next"
+import { UploadInformationForm } from "./UploadInformationForm"
 
 interface Props {
     user: UsuarioApi
-    label: string
 }
 
-export const EditProfileDialog = ({ user, label }: Props) => {
+export const EditInformationDialog = ({ user }: Props) => {
     const [open, setOpen] = useState(false)
     const t = useTranslations("settingsPage")
+    const c = useTranslations("common")
 
     const router = useRouter()
 
-    const onUpload = async (urlAvatar: string) => {
-
-        const payload = {
-            imagen_perfil_url: urlAvatar
-        }
-
+    const onUpload = async (payload: PatchUserRequest) => {
         try {
             const resp = await UsersService.editUser(user.id_usuario, payload)
             setCookie("userData", resp.usuarioActualizado)
@@ -50,7 +45,7 @@ export const EditProfileDialog = ({ user, label }: Props) => {
             <DialogTrigger asChild>
                 <Button variant="outline" size="sm">
                     <Pencil className="mr-2 h-4 w-4" />
-                    {label}
+                    {c("edit")}
                 </Button>
             </DialogTrigger>
 
@@ -59,8 +54,8 @@ export const EditProfileDialog = ({ user, label }: Props) => {
                     <DialogTitle>{t("editPicture")}</DialogTitle>
                 </DialogHeader>
 
-                <UploadAvatarInput
-                    currentImage={user.imagen_perfil_url}
+                <UploadInformationForm
+                    userData={user}
                     onUpload={onUpload}
                 />
             </DialogContent>

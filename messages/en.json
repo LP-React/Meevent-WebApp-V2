@@ -12,8 +12,8 @@
     "next": "Next",
     "continueWithGoogle": "Continue with Google",
     "or": "Or",
-    "lastName": "Last name",
     "name": "Name",
+    "lastName": "Last name",
     "phone": "Phone",
     "createAccount": "Create your account",
     "signUp": "Sign Up",
@@ -120,6 +120,8 @@
   },
   "settingsPage": {
     "editPicture": "Edit profile picture",
-    "uploadImage": "Upload image"
+    "uploadImage": "Upload image",
+    "personalInformation": "Personal information",
+    "saveChanges": "Save changes"
   }
 }

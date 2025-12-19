@@ -9,11 +9,10 @@ import axios from "axios"
 
 interface Props {
     currentImage?: string | null
-    userId?: number
     onUpload: (url: string) => void
 }
 
-export const UploadAvatarInput = ({ currentImage, onUpload, userId }: Props) => {
+export const UploadAvatarInput = ({ currentImage, onUpload }: Props) => {
 
     const [preview, setPreview] = useState<string | null>(currentImage ?? null)
     const [file, setFile] = useState<File | null>(null)

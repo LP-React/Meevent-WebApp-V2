@@ -4,7 +4,7 @@ export interface UsuarioApi {
     correo_electronico: string;
     numero_telefono: string;
     imagen_perfil_url: null | string;
-    fecha_nacimiento: string | null;
+    fecha_nacimiento: string;
     tipo_usuario: "artista" | "normal" | "organizador";
 }
 
