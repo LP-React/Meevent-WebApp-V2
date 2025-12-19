@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 const BASE_URL =
-    process.env.NEXT_PUBLIC_API_URL || "https://localhost:7292";
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5077";
 
 const api = axios.create({
     baseURL: BASE_URL,
