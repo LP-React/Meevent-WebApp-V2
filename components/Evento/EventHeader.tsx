@@ -4,15 +4,19 @@ import { Button } from '../ui/button'
 import { Calendar, MapPin } from 'lucide-react'
 import { Card, CardDescription, CardHeader } from '../ui/card'
 
-export const EventHeader = () => {
+interface Props {
+  eventName: string,
+}
+
+export const EventHeader = ({ eventName }: Props) => {
   const t = useTranslations('Eventos')
   return (
     <section className="grid gap-6 mb-8 xl:grid-cols-2 xl:items-center">
 
       {/* LEFT */}
       <div className="grid gap-5">
-        <h1 className="text-2xl font-black">
-          {/* Nombre del evento */}
+        <h1 className="text-2xl font-bold">
+          {eventName}
         </h1>
 
         <div className="flex items-center gap-3">

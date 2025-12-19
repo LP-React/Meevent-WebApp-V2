@@ -2,7 +2,11 @@ import { Accordion } from '@radix-ui/react-accordion'
 import { useTranslations } from 'next-intl'
 import { AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 
-export const EventOverview = () => {
+interface Props {
+  infoEvent: string,
+}
+
+export const EventOverview = ({ infoEvent }: Props) => {
   const t = useTranslations('Eventos')
   return (
     <section className="mt-6">
@@ -13,7 +17,7 @@ export const EventOverview = () => {
           </AccordionTrigger>
           <AccordionContent className="space-y-4">
             <p>
-              {/* info del evento */}
+              {infoEvent}
             </p>
           </AccordionContent>
         </AccordionItem>
