@@ -27,7 +27,7 @@ export const Navbar = async ({ cookieTheme, cookieUser }: Props) => {
 
 
     return (
-        <div className="top-0 w-full h-[55px] flex justify-center items-center border-b-2 z-50 fixed">
+        <div className="top-0 w-full h-[55px] flex justify-center items-center border-b-2 z-50 fixed bg-background">
 
             <nav className="w-[75%] flex justify-between items-center text-[18px]">
 

@@ -12,8 +12,8 @@
     "next": "Next",
     "continueWithGoogle": "Continue with Google",
     "or": "Or",
-    "lastName": "Last name",
     "name": "Name",
+    "lastName": "Last name",
     "phone": "Phone",
     "createAccount": "Create your account",
     "signUp": "Sign Up",
@@ -36,7 +36,11 @@
     "dark": "Dark",
     "light": "Light",
     "logout": "Logout",
-    "mode": "Mode"
+    "mode": "Mode",
+    "settings": "Settings",
+    "profile": "Profile",
+    "security": "Security",
+    "edit": "Edit"
   },
   "Navbar": {
     "title": "Hello world!",
@@ -110,5 +114,14 @@
     "NameArt": "Music genre",
     "redesAr": "Social media",
     "organizador": "Organizer"
+  },
+  "settingsLayout": {
+    "description": "Lorem ipsum here idk"
+  },
+  "settingsPage": {
+    "editPicture": "Edit profile picture",
+    "uploadImage": "Upload image",
+    "personalInformation": "Personal information",
+    "saveChanges": "Save changes"
   }
 }
