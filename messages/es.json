@@ -105,5 +105,27 @@
     "NameArt": "Género musical",
     "redesAr": "Redes sociales",
     "organizador": "Organizador"
+  },
+  "Eventos": {
+    "titleE": "Explora la costa verde",
+    "follow": "Seguir",
+    "by": "Por: ",
+    "overiew": "Resumen",
+    "good": "Información importante",
+    "Location": "Ubicación",
+    "howDo": "¿Cómo deseas llegar?",
+    "Organized": "Organizado por",
+    "Followers": "Seguidores",
+    "Events": "Eventos",
+    "Hosting": "Organizando",
+    "Contact": "Contacto",
+    "Report": "Reportar este evento",
+    "Highlights": "Destacados",
+    "Get tickets": "Obtener entradas",
+    "Driving": "En auto",
+    "Public": "Transporte público",
+    "Biking": "En bicicleta",
+    "Walking": "Caminando",
+    "overview": "Descripción general"
   }
 }

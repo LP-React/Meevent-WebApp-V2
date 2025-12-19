@@ -139,6 +139,11 @@
     "Contact": "Contact",
     "Report": "Report this event",
     "Highlights": "Highlights",
-    "Get tickets": "Get tickets"
+    "Get tickets": "Get tickets",
+    "Driving": "Driving",
+    "Public": "Public transport",
+    "Biking": "Biking",
+    "Walking": "Walking",
+    "overview": "Overview"
   }
 }
