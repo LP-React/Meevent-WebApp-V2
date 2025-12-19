@@ -7,7 +7,6 @@ import { routing } from '@/i18n/routing';
 import { ThemeProvider } from "@/components/providers/Theme-Provider";
 import { cookies } from "next/headers";
 import { Providers } from "@/components/providers/Providers";
-import { Evento } from "@/components/Evento/Evento";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
