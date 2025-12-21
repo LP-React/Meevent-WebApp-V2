@@ -1,17 +1,23 @@
 import { http } from "@/lib/http";
-import { GetEventResponse, GetEventsListResponse } from "@/types/api/events";
+import { GetEventResponse, GetEventsListResponse, GetEventsQuery, PostEventRequest, PostEventResponse } from "@/types/api/events";
 
 export const EventService = {
-    getAll: () =>
-        http<GetEventsListResponse>("/api/eventos/getEventos"),
+
+    getAll: (params?: GetEventsQuery) =>
+        http<GetEventsListResponse>(
+            "/api/eventos/listarEventosCompletos",
+            {
+                params,
+            }
+        ),
 
     getBySlug: (slug: string) =>
         http<GetEventResponse>(`/api/eventos/getslug/${slug}`),
 
-    // patchEvent: async (id: number, payload: PatchUserRequest) =>
-    //     http<PatchUserResponse>(`/api/Usuarios/editarUsuario/${id}`, {
-    //         method: "PATCH",
-    //         data: payload
-    //     })
 
+    postEvent: (payload: PostEventRequest) =>
+        http<PostEventResponse>("/api/eventos/insertEvento", {
+            method: "POST",
+            data: payload,
+        }),
 };
