@@ -5,7 +5,7 @@ export const EventService = {
 
     getAll: (params?: GetEventsQuery) =>
         http<GetEventsListResponse>(
-            "/api/eventos/listarEventosCompletos",
+            "/api/eventos/getEventos",
             {
                 params,
             }

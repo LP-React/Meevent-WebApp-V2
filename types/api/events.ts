@@ -59,6 +59,8 @@ export interface Ubicacion {
     nombreLocal: string;
     capacidadLocal: number;
     direccionLocal: string;
+    latitud: number;
+    longitud: number;
 }
 
 /* /api/eventos/listarEventosCompletos */
@@ -128,6 +130,3 @@ export interface EventPost {
     localId: number;
     perfilOrganizadorId: number;
 }
-
-
-
