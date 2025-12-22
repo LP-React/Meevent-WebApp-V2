@@ -65,7 +65,7 @@ export const SignUpCardContent = () => {
 
         const payloadLogin = {
             correo_electronico: payloadSignUp.correo_electronico,
-            contrasena: payloadSignUp.contrasena
+            contrasenia: payloadSignUp.contrasena
         }
 
         try {

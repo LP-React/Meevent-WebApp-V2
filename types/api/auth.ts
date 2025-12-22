@@ -4,7 +4,7 @@ import { UsuarioApi } from "./users";
 /* LOGIN */
 export interface LoginRequest {
     correo_electronico: string;
-    contrasena: string;
+    contrasenia: string;
 }
 
 export interface LoginResponse {
