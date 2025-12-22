@@ -1,7 +1,12 @@
+import { EventoApi } from '@/types/api/events'
 import { Bike, BusFront, CarFront, Footprints } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-export const EventLocation = () => {
+interface Props {
+  event: EventoApi
+}
+
+export const EventLocation = ({ event }: Props) => {
 
   const t = useTranslations('Eventos')
   return (
@@ -13,25 +18,18 @@ export const EventLocation = () => {
 
       <div className="md:flex md:gap-6">
 
-        {/* LEFT */}
         <div className="md:w-1/2 space-y-4">
           <div>
-            <p className="font-semibold">
-              {/* Nombre del lugar*/}
+            <p>
+              {`${event.ubicacion.nombreLocal} - ${event.ubicacion.direccionLocal}`}
             </p>
             <p className="text-muted-foreground">
-              {/* Dirreccion*/}
-            </p>
-            <p className="text-muted-foreground">
-              {/* Distrito */}
+              {`${event.ubicacion.nombreCiudad} - ${event.ubicacion.nombrePais}`}
             </p>
           </div>
 
-          <img
-            src="" /* Imagen bueno no es imagen map */
-            alt="Mapa del evento"
-            className="rounded-2xl w-full md:hidden"
-          />
+
+
 
           <div>
             <h3 className="font-semibold mb-3">
@@ -64,11 +62,14 @@ export const EventLocation = () => {
           </div>
         </div>
 
-        {/* RIGHT */}
-        <img
-          src="" /* Imagen bueno no es imagen map */
-          alt="Mapa del evento"
-          className="hidden md:block md:w-1/2 rounded-2xl"
+        <iframe
+          width="100%"
+          height="300"
+          loading="lazy"
+          style={{ border: 0 }}
+          referrerPolicy="no-referrer-when-downgrade"
+          src={`https://www.google.com/maps?q=${event.ubicacion.latitud},${event.ubicacion.longitud}&z=16&output=embed`}
+          className='shadow-xl'
         />
       </div>
     </section>

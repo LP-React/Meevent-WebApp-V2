@@ -21,8 +21,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         const { slug } = await params
         const { evento } = await EventService.getBySlug(slug)
 
-        console.log(evento.tituloEvento);
-
         return {
             title: `Meevent - ${evento.tituloEvento}`,
             description: `Information of ${evento.descripcionCorta}`
@@ -36,38 +34,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function EventPage({ params }: Props) {
+
     const { slug } = await params;
     const { evento } = await EventService.getBySlug(slug)
     console.log(evento);
 
-
-
     return (
-        <div className=" w-[70%] m-auto min-h-dvh pb-28 mt-20">
+        <div className=" w-[65%] m-auto min-h-dvh pb-28 mt-20">
 
             <EventBanner urlImage={evento.imagenPortadaUrl || ''} />
-            <EventHeader eventName={evento.tituloEvento} />
+            <div className="px-4">
 
-            <FieldSeparator />
+                <EventHeader event={evento} />
 
-            <EventOverview infoEvent={evento.descripcionCorta} />
+                <FieldSeparator />
 
-            <FieldSeparator />
+                <EventOverview infoEvent={evento.descripcionEvento} />
 
-            <EventGood />
+                <FieldSeparator />
 
-            <FieldSeparator />
+                <EventGood />
 
-            <EventLocation />
+                <FieldSeparator />
 
-            <FieldSeparator />
+                <EventLocation event={evento} />
 
-            <EventOrganizer />
-            <EventReport />
+                <FieldSeparator />
 
-            <FieldSeparator />
+                <EventOrganizer event={evento} />
+                <EventReport />
 
-            <EventButtonMobile />
+                <FieldSeparator />
+
+                <EventButtonMobile />
+            </div>
         </div>
     );
 }
