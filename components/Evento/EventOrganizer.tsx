@@ -2,8 +2,13 @@ import { useTranslations } from 'next-intl'
 import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Button } from '../ui/button'
+import { EventoApi } from '@/types/api/events'
 
-export const EventOrganizer = () => {
+interface Props {
+  event: EventoApi
+}
+
+export const EventOrganizer = ({ event }: Props) => {
   const t = useTranslations('Eventos')
 
   return (
@@ -13,30 +18,30 @@ export const EventOrganizer = () => {
       </h2>
 
       <Card className="bg-muted border-none">
-        <CardHeader className="grid gap-6 md:grid-cols-3 md:items-center">
+        <div className="grid gap-6 md:grid-cols-3 md:items-center">
 
-          <div className="flex justify-center">
-            <Avatar className="w-20 h-20">
-              <AvatarImage src="" /> {/* IMAGEN DEL ORGANIZADOR */}
-              <AvatarFallback>ORG</AvatarFallback>
+          <div className="flex justify-center items-center gap-2">
+            <Avatar className="w-10 h-10">
+              <AvatarImage src={event.organizador.logoUrl} />
+              <AvatarFallback>{event.organizador.nombreOrganizador}</AvatarFallback>
             </Avatar>
+            <h3 className='text-xl'>{event.organizador.nombreOrganizador}</h3>
           </div>
 
           <div className="text-center md:text-left">
-            <CardTitle>{/* NOMBRE DE ORGANIZADOR */}</CardTitle>
 
-            <div className="flex justify-around mt-4">
-              <div>
+            <div className="flex justify-around lg:mt-0 xl:mt-0 sm:mt-0 mt-4">
+              <div className='flex flex-col items-center justify-center'>
                 <CardDescription>{t("Followers")}</CardDescription>
-                <p className="font-semibold">{/* NUMERO DE SEGUIDORES */}</p>
+                <p className="font-semibold mt-2">{event.organizador.idPerfilOrganizador}</p>
               </div>
-              <div>
+              <div className='flex flex-col items-center justify-center'>
                 <CardDescription>{t("Events")}</CardDescription>
-                <p className="font-semibold">{/* NUMERO TOTAL DE LOS EVENTOS */}</p>
+                <p className="font-semibold mt-2">{event.organizador.idPerfilOrganizador}</p>
               </div>
-              <div>
+              <div className='flex flex-col items-center justify-center'>
                 <CardDescription>{t("Hosting")}</CardDescription>
-                <p className="font-semibold">{/* HOSTING */}</p>
+                <p className="font-semibold mt-2">{event.organizador.idPerfilOrganizador}</p>
               </div>
             </div>
           </div>
@@ -50,7 +55,7 @@ export const EventOrganizer = () => {
             </Button>
           </div>
 
-        </CardHeader>
+        </div>
       </Card>
     </section>
   )

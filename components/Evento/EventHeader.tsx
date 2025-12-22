@@ -3,29 +3,33 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Button } from '../ui/button'
 import { Calendar, MapPin } from 'lucide-react'
 import { Card, CardDescription, CardHeader } from '../ui/card'
+import { EventoApi } from '@/types/api/events'
 
 interface Props {
-  eventName: string,
+  event: EventoApi,
 }
 
-export const EventHeader = ({ eventName }: Props) => {
-  const t = useTranslations('Eventos')
-  return (
-    <section className="grid gap-6 mb-8 xl:grid-cols-2 xl:items-center">
 
-      {/* LEFT */}
-      <div className="grid gap-5">
+
+export const EventHeader = ({ event }: Props) => {
+  const t = useTranslations('Eventos')
+  const c = useTranslations('common')
+
+  return (
+    <section className="grid gap-8 mb-8 xl:grid-cols-[1.5fr_1fr] xl:items-center">
+
+      <div className="grid gap-5 mt-4">
         <h1 className="text-2xl font-bold">
-          {eventName}
+          {event.tituloEvento}
         </h1>
 
         <div className="flex items-center gap-3">
           <Avatar>
-            <AvatarImage src="" /> {/* IMAGEN ORGANIZADOR */}
-            <AvatarFallback>EV</AvatarFallback>
+            <AvatarImage src={event.organizador.logoUrl} />
+            <AvatarFallback>{event.organizador.nombreOrganizador}</AvatarFallback>
           </Avatar>
 
-          <p>{t("by")} {/* Organizador */}</p>
+          <p>{t("by")}{event.organizador.nombreOrganizador}</p>
 
           <Button variant="outline">
             {t("follow")}
@@ -35,17 +39,20 @@ export const EventHeader = ({ eventName }: Props) => {
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <MapPin className="w-5" />
-            <p>{/* Dirección del evento */}</p>
+            <p>{`${event.ubicacion.nombreLocal} - ${event.ubicacion.direccionLocal}`}</p>
           </div>
 
           <div className="flex items-center gap-2">
             <Calendar className="w-5" />
-            <p>{/* HORA Y FECHA NOSE XD */}</p>
+            <p>{`${c("start")}:  ${event.fechaInicio}`}</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Calendar className="w-5" />
+            <p>{`${c("end")}:  ${event.fechaFin}`}</p>
           </div>
         </div>
       </div>
 
-      {/* RIGHT – TICKET DESKTOP */}
       <Card className="hidden xl:block rounded-2xl">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>

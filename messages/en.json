@@ -40,7 +40,9 @@
     "settings": "Settings",
     "profile": "Profile",
     "security": "Security",
-    "edit": "Edit"
+    "edit": "Edit",
+    "start": "Start",
+    "end": "End"
   },
   "Navbar": {
     "title": "Hello world!",
