@@ -20,7 +20,7 @@ export const UploadInformationForm = ({ onUpload, userData }: Props) => {
     const [form, setForm] = useState<PatchUserRequest>({
         nombre_completo: userData.nombre_completo,
         numero_telefono: userData.numero_telefono,
-        fecha_nacimiento: "",
+        fecha_nacimiento: userData.fecha_nacimiento,
     })
 
     const handleChange = (
@@ -54,21 +54,11 @@ export const UploadInformationForm = ({ onUpload, userData }: Props) => {
                 value={form.nombre_completo ?? ""}
             />
 
-            {/* <Input
-                name="correo_electronico"
-                type="email"
-                placeholder={c("email")}
-                onChange={handleChange}
-                value={form.correo_electronico ?? ""}
-
-            /> */}
-
             <Input
                 name="numero_telefono"
                 placeholder={c("phone")}
                 onChange={handleChange}
                 value={form.numero_telefono ?? ""}
-
             />
 
             <Input

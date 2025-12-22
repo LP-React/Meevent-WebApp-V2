@@ -8,8 +8,6 @@ export default async function WithNavbarLayout({ children }: { children: React.R
     const raw = cookieStore.get("userData")?.value;
     const userData = raw ? JSON.parse(raw) : null;
 
-
-
     return (
         <>
             <Navbar cookieTheme={themeCookie} cookieUser={userData} />

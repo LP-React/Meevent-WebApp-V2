@@ -42,7 +42,8 @@
     "security": "Security",
     "edit": "Edit",
     "start": "Start",
-    "end": "End"
+    "end": "End",
+    "dashboard": "Dashboard"
   },
   "Navbar": {
     "title": "Hello world!",
