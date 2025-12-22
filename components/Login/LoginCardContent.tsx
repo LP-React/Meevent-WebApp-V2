@@ -41,7 +41,7 @@ export const LoginCardContent = () => {
         try {
             const resp = await AuthService.login({
                 correo_electronico: email,
-                contrasena: password,
+                contrasenia: password,
             });
             if (resp.exitoso) {
                 setCookie("userData", resp.usuario)
