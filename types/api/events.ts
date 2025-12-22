@@ -94,16 +94,18 @@ export interface GetEventResponse {
 export interface PostEventRequest {
     tituloEvento: string;
     descripcionEvento: string;
-    slugEvento: string;
     descripcionCorta: string;
     fechaInicio: string;
     fechaFin: string;
+    zonaHoraria: string;
+    capacidadEvento: number;
     eventoGratuito: boolean;
     eventoOnline: boolean;
-    capacidadEvento: number;
+    estadoEvento: string;
+    imagenPortadaUrl: string;
+    perfilOrganizadorId: number;
     subcategoriaEventoId: number;
     localId: number;
-    perfilOrganizadorId: number;
 }
 
 
@@ -115,18 +117,19 @@ export interface PostEventResponse {
 }
 
 /* POST STRUCTURE */
-export interface EventPost {
+export interface Post {
     tituloEvento: string;
     descripcionEvento: string;
     descripcionCorta: string;
     fechaInicio: string;
     fechaFin: string;
-    estado_evento: string;
+    zonaHoraria: string;
+    capacidadEvento: number;
     eventoGratuito: boolean;
     eventoOnline: boolean;
-    capacidadEvento: number;
-    imagen_portada_url: string;
+    estadoEvento: string;
+    imagenPortadaUrl: string;
+    perfilOrganizadorId: number;
     subcategoriaEventoId: number;
     localId: number;
-    perfilOrganizadorId: number;
 }

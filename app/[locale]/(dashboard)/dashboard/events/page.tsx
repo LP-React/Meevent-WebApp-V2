@@ -57,7 +57,7 @@ export default function GamesPage() {
                         <ArrowDownWideNarrow />
                     </Button>
 
-                    <EventCreate onCreate={handleCreateEvent} loading={loadingCreate} />
+                    <EventCreate onCreate={handleCreateEvent} loading={loadingCreate} organizerId={userData.perfilOrganizador.id_perfil_organizador}/>
                 </div>
             </div>
 
