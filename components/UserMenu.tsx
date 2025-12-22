@@ -20,26 +20,29 @@ import { Skeleton } from "./ui/skeleton"
 import { deleteCookie } from "cookies-next"
 import { useTranslations } from "next-intl"
 import { signOut } from "next-auth/react"
+import { ThemeButton } from "./utils/ThemeButton"
+import Image from "next/image"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
 const menuOptions = [
     {
         label: "Tickets",
-        link: "tickets",
+        link: "/account/my-tickets",
         icon: Ticket
     },
     {
         label: "Liked",
-        link: "liked",
+        link: "/account/my-likes",
         icon: Heart
     },
     {
         label: "Following",
-        link: "following",
+        link: "/account/my-follows",
         icon: CheckCheck
     },
     {
         label: "Settings",
-        link: "settings",
+        link: "/account/settings",
         icon: Settings
     }
 ]
@@ -61,7 +64,7 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
     const c = useTranslations('common');
 
     console.log(cookieUser);
-    
+
 
     // TODO: with auth.js
     // const { data: session, status } = useSession();
@@ -73,22 +76,19 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
                 <Button variant={"ghost"}>
                     <div className="flex justify-between w-52 items-center h-full cursor-pointer">
                         <div className="flex justify-center items-center">
-
-
-                            {/* {
-                                // TODO: with auth.js
-                                session?.user?.image ? (
-                                    <Image width={96} height={96} src={session?.user?.image} alt="User Avatar" loading="eager" className="h-6.5 w-6.5 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full" />)
-                                    : (<Skeleton className="h-6.5 w-6.5 rounded-full" />)
-                            }
                             {
-                                session?.user?.name ? (<div className="ml-2 text-[16px] font-normal">{session?.user?.name}</div>)
-                                    : (<Skeleton className="ml-2 w-28 h-3" />)
-                            } */}
-
-
-                            {
-                                (cookieUser?.imagen_perfil_url ? (<img width={96} height={96} src={"https://i.pinimg.com/736x/6b/ee/38/6bee381a6a19c5cb8cd82eed31a17c02.jpg"} alt="User Avatar" loading="eager" className="h-6.5 w-6.5 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full" />)
+                                (cookieUser?.imagen_perfil_url ?
+                                    (
+                                        <Avatar>
+                                            <AvatarImage width={96} height={96}
+                                                src={cookieUser.imagen_perfil_url ?? undefined}
+                                                className="h-6.5 w-6.5 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full"
+                                            />
+                                            <AvatarFallback>
+                                                {cookieUser.nombre_completo.charAt(0).toUpperCase()}
+                                            </AvatarFallback>
+                                        </Avatar>
+                                    )
                                     : (<Skeleton className="h-6.5 w-6.5 rounded-full" />)
                                 )
                             }
@@ -122,7 +122,7 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
 
                 <DropdownMenuSeparator />
 
-                {/* 
+
                 <DropdownMenuGroup>
                     <DropdownMenuItem className="justify-between cursor-pointer">
                         <span>{c('mode')}</span>
@@ -130,7 +130,7 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
 
-                <DropdownMenuSeparator /> */}
+                <DropdownMenuSeparator />
 
                 {/* Language Menu */}
                 <DropdownMenuGroup>
