@@ -16,12 +16,12 @@ const profiles = [
         icon: User,
         description: "userDescription"
     },
-    {
-        id: "artista",
-        label: "artist",
-        icon: Star,
-        description: "artistDescription"
-    },
+    // {
+    //     id: "artista",
+    //     label: "artist",
+    //     icon: Star,
+    //     description: "artistDescription"
+    // },
     {
         id: "organizador",
         label: "organizer",

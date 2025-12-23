@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDown, ChevronUp, User2, PanelsTopLeft, Gamepad2, FolderPen } from "lucide-react"
+import { ChevronDown, ChevronUp, User2, PanelsTopLeft, Gamepad2, FolderPen, ArrowLeftFromLine } from "lucide-react"
 
 import {
     Sidebar,
@@ -134,8 +134,14 @@ export function AppSidebar({ userData, themeCookie }: Props) {
 
             <SidebarFooter>
                 <SidebarMenu>
-
-                    <SidebarMenuItem className="flex items-center justify-between">
+                    <SidebarMenuItem className="flex items-center justify-between mb-2">
+                        <Link href={'/'} className="flex items-center justify-between w-full">
+                            <span className="font-semibold">{c("backTo")}: </span>
+                            <ArrowLeftFromLine />
+                        </Link>
+                    </SidebarMenuItem>
+                    <Separator />
+                    <SidebarMenuItem className="flex items-center justify-between mt-2">
                         <span className="font-semibold">{c("theme")}: </span>
                         <ThemeButton themeCookie={themeCookie} variant={"outline"} size={"icon-sm"} />
                     </SidebarMenuItem>

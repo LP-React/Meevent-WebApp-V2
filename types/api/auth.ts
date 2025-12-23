@@ -15,13 +15,20 @@ export interface LoginResponse {
 
 /* SINGUP */
 export interface SignupRequest {
-    nombre_completo: string;
     correo_electronico: string;
-    contrasena: string;
+    tipo_usuario: "normal" | "organizador" | "artista";
+    nombre_completo: string;
+    contrasenia: string;
+    id_ciudad: number;
+    telefono_contacto?: string;
     numero_telefono?: string;
     imagen_perfil_url?: string;
     fecha_nacimiento?: string;
-    tipo_usuario: string
+    nombre_artistico?: string;
+    biografia_artista?: string;
+    genero_musical?: string;
+    nombre_organizador?: string;
+    descripcion_organizador?: string;
 }
 
 export interface SignupResponse {
