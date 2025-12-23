@@ -16,12 +16,10 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Link } from "@/i18n/navigations"
 import { CheckCheck, ChevronDown, Heart, LayoutGrid, LogOut, Settings, Ticket } from "lucide-react"
-import { Skeleton } from "./ui/skeleton"
 import { deleteCookie } from "cookies-next"
 import { useTranslations } from "next-intl"
 import { signOut } from "next-auth/react"
 import { ThemeButton } from "./utils/ThemeButton"
-import Image from "next/image"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
 const menuOptions = [

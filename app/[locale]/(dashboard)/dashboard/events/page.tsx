@@ -60,7 +60,7 @@ export default function EventPage() {
                 </div>
             </div>
 
-            <div className="flex flex-wrap gap-4 p-4">
+            <div className="flex flex-wrap gap-4 p-4 w-full justify-evenly">
                 {events.map((eve) => (
                     <EventCard key={eve.idEvento} event={eve} />
                 ))}

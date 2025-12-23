@@ -1,6 +1,5 @@
 import { UsuarioApi } from "./users";
 
-
 /* LOGIN */
 export interface LoginRequest {
     correo_electronico: string;

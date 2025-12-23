@@ -1,4 +1,6 @@
-import { ChevronDown, ChevronUp, Home, Inbox, Search, Settings, User2, GalleryThumbnails, PanelsTopLeft, Gamepad2, FolderPen } from "lucide-react"
+"use client"
+
+import { ChevronDown, ChevronUp, User2, PanelsTopLeft, Gamepad2, FolderPen } from "lucide-react"
 
 import {
     Sidebar,
@@ -19,57 +21,54 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { SidebarButton } from "./SidebarButton"
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radix-ui/react-collapsible';
 import { Link } from "@/i18n/navigations";
+import { UsuarioApi } from "@/types/api/users";
+import { useTranslations } from "next-intl";
+import { deleteCookie } from "cookies-next";
+import { signOut } from "next-auth/react"
+import { ThemeButton } from "../utils/ThemeButton"
+import { LanguageButton } from "../utils/LanguageButton"
+import { Separator } from "../ui/separator"
+import { Button } from "../ui/button"
 
 
 // Menu items.
 const sidebarData = [
     {
-        title: "Maintance",
+        label: "maintance",
         icon: FolderPen,
         link: "/dashboard/",
         sublinks: [
             {
-                title: "Events",
+                label: "events",
                 link: "/dashboard/events",
                 icon: Gamepad2
-            },
-            {
-                title: "Tickets",
-                link: "/dashboard/events",
-                icon: Gamepad2
-            },
-            {
-                title: "Categories",
-                link: "/dashboard/categories",
-                icon: Gamepad2
-            },
-            {
-                title: "Subcategories",
-                link: "/dashboard/subcategories",
-                icon: Gamepad2
-            },
+            }
         ]
     },
     {
-        title: "Profile",
+        label: "profile",
         icon: PanelsTopLeft,
         link: "/dashboard/profile-reviews",
         sublinks: [
             {
-                title: "Reviews",
-                link: "/dashboard/profile-reviews",
-                icon: Gamepad2
-            },
-            {
-                title: "Carousel",
-                link: "/admin/dashboard/carousel",
+                label: "organizerProfile",
+                link: "/dashboard/profile",
                 icon: Gamepad2
             }
         ]
     },
 ]
 
-export function AppSidebar() {
+interface Props {
+    userData: UsuarioApi
+    themeCookie: string
+}
+
+export function AppSidebar({ userData, themeCookie }: Props) {
+
+    const t = useTranslations("organizerSidebar")
+    const c = useTranslations("common")
+
     return (
         <Sidebar collapsible="icon">
             <SidebarHeader>
@@ -78,18 +77,12 @@ export function AppSidebar() {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <SidebarMenuButton>
-                                    Select Workspace
+                                    {
+                                        userData?.perfilOrganizador?.nombre_organizador
+                                    }
                                     <ChevronDown className="ml-auto" />
                                 </SidebarMenuButton>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent className="w-[--radix-popper-anchor-width]">
-                                <DropdownMenuItem>
-                                    <span>Acme Inc</span>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    <span>Acme Corp.</span>
-                                </DropdownMenuItem>
-                            </DropdownMenuContent>
                         </DropdownMenu>
                     </SidebarMenuItem>
                 </SidebarMenu>
@@ -97,18 +90,18 @@ export function AppSidebar() {
 
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarGroupLabel>{t("application")}</SidebarGroupLabel>
                     <SidebarGroupContent>
                         {
                             sidebarData.map((opt) => (
-                                <SidebarMenu key={opt.title}>
+                                <SidebarMenu key={opt.label}>
                                     <Collapsible defaultOpen className="group/collapsible">
                                         <SidebarMenuItem>
                                             <CollapsibleTrigger asChild>
                                                 <SidebarMenuButton>
                                                     <opt.icon />
                                                     <span>
-                                                        {opt.title}
+                                                        {t(opt.label)}
                                                     </span>
                                                     <ChevronDown className="ml-auto" />
                                                 </SidebarMenuButton>
@@ -117,11 +110,11 @@ export function AppSidebar() {
                                                 <SidebarMenuSub>
                                                     {
                                                         opt.sublinks.map((sub) => (
-                                                            <SidebarMenuSubItem key={sub.title}>
+                                                            <SidebarMenuSubItem key={sub.label}>
                                                                 <Link href={sub.link} className="flex">
                                                                     {/* <sub.icon /> */}
                                                                     <span>
-                                                                        {sub.title}
+                                                                        {t(sub.label)}
                                                                     </span>
                                                                 </Link>
                                                             </SidebarMenuSubItem>
@@ -134,8 +127,6 @@ export function AppSidebar() {
                                 </SidebarMenu>
                             ))
                         }
-
-
                     </SidebarGroupContent>
                 </SidebarGroup>
 
@@ -143,26 +134,32 @@ export function AppSidebar() {
 
             <SidebarFooter>
                 <SidebarMenu>
+
+                    <SidebarMenuItem className="flex items-center justify-between">
+                        <span className="font-semibold">{c("theme")}: </span>
+                        <ThemeButton themeCookie={themeCookie} variant={"outline"} size={"icon-sm"} />
+                    </SidebarMenuItem>
+                    <SidebarMenuItem className="flex items-center justify-between mt-2 mb-2">
+                        <span className="font-semibold">{c("languageText")}: </span>
+                        <LanguageButton />
+                    </SidebarMenuItem>
+                    <Separator />
                     <SidebarMenuItem>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <SidebarMenuButton>
-                                    <User2 /> Username
+                                    <User2 /> {userData.nombre_completo}
                                     <ChevronUp className="ml-auto" />
                                 </SidebarMenuButton>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent
-                                side="top"
-                                className="w-[--radix-popper-anchor-width]"
+                                side="right"
+                                className="w-full ml-2"
                             >
-                                <DropdownMenuItem>
-                                    <span>Account</span>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    <span>Billing</span>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    <span>Sign out</span>
+                                <DropdownMenuItem onClick={() => { deleteCookie("userData"), signOut({ callbackUrl: "/" }) }} className="w-full">
+                                    <Button variant={"destructive"}>
+                                        {c("logout")}
+                                    </Button>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>

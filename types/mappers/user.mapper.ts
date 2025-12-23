@@ -1,4 +1,4 @@
-import { UsuarioApi } from "../api/users";
+/* import { UsuarioApi } from "../api/users";
 import { User } from "../domain/user";
 
 export const mapUsuarioFromApi = (api: UsuarioApi): User => ({
@@ -10,3 +10,4 @@ export const mapUsuarioFromApi = (api: UsuarioApi): User => ({
     birthdate: api.fecha_nacimiento,
     profile_type: api.tipo_usuario,
 });
+ */

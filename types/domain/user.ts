@@ -7,3 +7,5 @@ export interface User {
     birthdate: string | null;
     profile_type: 'artista' | 'normal' | 'organizador';
 }
+
+
