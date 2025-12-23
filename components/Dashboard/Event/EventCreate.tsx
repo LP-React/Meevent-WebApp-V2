@@ -93,7 +93,7 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
     const t = useTranslations("formPostEvent")
 
     const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement>
+        e: any
     ) => {
         const { name, value, type, checked, files } = e.target;
 
