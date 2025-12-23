@@ -15,7 +15,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Link } from "@/i18n/navigations"
-import { CheckCheck, ChevronDown, Heart, LogOut, Settings, Ticket } from "lucide-react"
+import { CheckCheck, ChevronDown, Heart, LayoutGrid, LogOut, Settings, Ticket } from "lucide-react"
 import { Skeleton } from "./ui/skeleton"
 import { deleteCookie } from "cookies-next"
 import { useTranslations } from "next-intl"
@@ -76,27 +76,16 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
                 <Button variant={"ghost"}>
                     <div className="flex justify-between w-52 items-center h-full cursor-pointer">
                         <div className="flex justify-center items-center">
-                            {
-                                (cookieUser?.imagen_perfil_url ?
-                                    (
-                                        <Avatar>
-                                            <AvatarImage width={96} height={96}
-                                                src={cookieUser.imagen_perfil_url ?? undefined}
-                                                className="h-6.5 w-6.5 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full"
-                                            />
-                                            <AvatarFallback>
-                                                {cookieUser.nombre_completo.charAt(0).toUpperCase()}
-                                            </AvatarFallback>
-                                        </Avatar>
-                                    )
-                                    : (<Skeleton className="h-6.5 w-6.5 rounded-full" />)
-                                )
-                            }
-                            {
-                                (cookieUser?.nombre_completo ? (<div className="ml-2 text-[16px] font-normal">{cookieUser?.nombre_completo}</div>)
-                                    : (<Skeleton className="ml-2 w-28 h-3" />)
-                                )
-                            }
+                            <Avatar>
+                                <AvatarImage width={96} height={96}
+                                    src={cookieUser.imagen_perfil_url ?? undefined}
+                                    className="h-6.5 w-6.5 object-cover shadow-[0_2px_6px_rgba(0,0,0,0.5)] text-foreground rounded-full"
+                                />
+                                <AvatarFallback>
+                                    {cookieUser.nombre_completo.charAt(0).toUpperCase()}
+                                </AvatarFallback>
+                            </Avatar>
+                            <div className="ml-2 text-[16px] font-normal">{cookieUser?.nombre_completo}</div>
                         </div>
                         <ChevronDown />
                     </div>
@@ -121,6 +110,24 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
                 </DropdownMenuGroup>
 
                 <DropdownMenuSeparator />
+
+                {
+                    cookieUser.perfilOrganizador &&
+                    <>
+                        <DropdownMenuGroup>
+                            <DropdownMenuItem className="justify-between cursor-pointer font-medium bg-muted/50" >
+                                <Link href='/dashboard' className="justify-between items-center w-full flex cursor-pointer" >
+                                    <span>{`${c('organizer')} ${c('dashboard')}`}</span>
+                                    <LayoutGrid />
+                                </Link>
+                            </DropdownMenuItem>
+                        </DropdownMenuGroup>
+
+                        <DropdownMenuSeparator />
+                    </>
+                }
+
+
 
 
                 <DropdownMenuGroup>

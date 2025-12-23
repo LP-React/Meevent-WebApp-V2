@@ -42,7 +42,8 @@
     "security": "Security",
     "edit": "Edit",
     "start": "Start",
-    "end": "End"
+    "end": "End",
+    "dashboard": "Dashboard"
   },
   "Navbar": {
     "title": "Hello world!",
@@ -147,5 +148,43 @@
     "Biking": "Biking",
     "Walking": "Walking",
     "overview": "Overview"
+  },
+  "formPostEvent": {
+    "createEvent": "Create event",
+    "description": "Description",
+    "shortDescription": "Short description",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "dateTimeZone": "Time Zone",
+    "capacity": "N° assistants",
+    "bannerImage": "Banner image",
+    "organizer": "Organizer",
+    "subcategory": "Subcategory",
+    "category": "Category",
+    "free": "Free tickets",
+    "online": "Online event",
+    "cancel": "Cancel",
+    "publish": "Publish",
+    "saveAsDraft": "Save as draft",
+    "preview": "Preview",
+    "noImageSelected": "No image selected",
+    "nameEvent": "Name",
+    "publishing": "Publishing",
+    "saving": "Saving",
+
+    "city": "City",
+    "venue": "Venue",
+
+    "noSubcategoriesFound": "No subcategories found",
+    "selectSubcategory": "Select subcategory",
+    "searchSubCategory": "Search subcategory...",
+    
+    "noCategoriesFound": "No categories found",
+    "selectCategory": "Select category",
+    "searchCategory": "Search category...",
+
+    "noCitiesFound": "No cities found",
+    "selectCity": "Select Citty",
+    "searchCities": "Search Cities..."
   }
 }

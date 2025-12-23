@@ -15,8 +15,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { uploadToCloudinary } from "@/components/utils/uploadToCloudinary"
-import { PostEventRequest } from "@/types/api/events"
-import { PlusIcon } from "lucide-react"
+import { EventoApi, PostEventRequest, PutEventRequest } from "@/types/api/events"
+import { Edit, PlusIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { useEffect, useState } from "react"
@@ -33,62 +33,62 @@ import { Local } from "@/types/api/locales"
 import { CityComboBox } from "./CityCombobox"
 import { LocalesService } from "@/services/locales.service"
 import { LocalesComboBox } from "./LocalesCombobox"
+import { EventService } from "@/services/event.service"
 
 interface Props {
-    onCreate: (payload: PostEventRequest) => Promise<boolean>;
-    loading: boolean;
-    organizerId: number;
+    event: EventoApi
 }
 
-export function EventCreate({ onCreate, loading, organizerId }: Props) {
+export function EventEdit({ event }: Props) {
 
     const [form, setForm] = useState<PostEventRequest>({
-        tituloEvento: "",
-        descripcionEvento: "",
-        descripcionCorta: "",
-        fechaInicio: "",
-        fechaFin: "",
-        zonaHoraria: "UTC-5",
-        capacidadEvento: 0,
-        eventoGratuito: false,
-        eventoOnline: false,
-        estadoEvento: "",
-        imagenPortadaUrl: "",
-        perfilOrganizadorId: organizerId,
-        subcategoriaEventoId: 0,
-        localId: 0,
+        tituloEvento: event.tituloEvento,
+        descripcionEvento: event.descripcionEvento,
+        descripcionCorta: event.descripcionCorta,
+        fechaInicio: event.fechaInicio,
+        fechaFin: event.fechaFin,
+        zonaHoraria: event.zonaHoraria,
+        capacidadEvento: event.capacidadEvento,
+        eventoGratuito: event.eventoGratuito,
+        eventoOnline: event.eventoOnline,
+        estadoEvento: event.estadoEvento,
+        imagenPortadaUrl: event.imagenPortadaUrl,
+        perfilOrganizadorId: event.organizador.idPerfilOrganizador,
+        subcategoriaEventoId: event.subcategoria.idSubcategoriaEvento,
+        localId: event.ubicacion.idLocal,
     });
 
     const resetForm = () => {
         setForm({
-            tituloEvento: "",
-            descripcionEvento: "",
-            descripcionCorta: "",
-            fechaInicio: "",
-            fechaFin: "",
-            zonaHoraria: "UTC-5",
-            capacidadEvento: 0,
-            eventoGratuito: false,
-            eventoOnline: false,
-            estadoEvento: "",
-            imagenPortadaUrl: "",
-            perfilOrganizadorId: organizerId,
-            subcategoriaEventoId: 0,
-            localId: 0,
+            tituloEvento: event.tituloEvento,
+            descripcionEvento: event.descripcionEvento,
+            descripcionCorta: event.descripcionCorta,
+            fechaInicio: event.fechaInicio,
+            fechaFin: event.fechaFin,
+            zonaHoraria: event.zonaHoraria,
+            capacidadEvento: event.capacidadEvento,
+            eventoGratuito: event.eventoGratuito,
+            eventoOnline: event.eventoOnline,
+            estadoEvento: event.estadoEvento,
+            imagenPortadaUrl: event.imagenPortadaUrl,
+            perfilOrganizadorId: event.organizador.idPerfilOrganizador,
+            subcategoriaEventoId: event.subcategoria.idSubcategoriaEvento,
+            localId: event.ubicacion.idLocal,
         })
 
         setImageFile(null)
-        setImagePreview(null)
+        setImagePreview(event.imagenPortadaUrl)
     }
 
     const [imageFile, setImageFile] = useState<File | null>(null);
-    const [imagePreview, setImagePreview] = useState<string | null>(null);
+    const [imagePreview, setImagePreview] = useState<string | null>(form.imagenPortadaUrl);
     const [publishing, setPublishing] = useState(false);
     const [open, setOpen] = useState(false)
     const [categories, setCategories] = useState<CategoriasEvento[]>([])
     const [subcategories, setSubcategories] = useState<SubcategoriaEvento[]>([])
     const [cities, setCities] = useState<Ciudad[]>([])
     const [locales, setLocales] = useState<Local[]>([])
+    const [loading, setLoading] = useState(false)
 
     const t = useTranslations("formPostEvent")
 
@@ -112,32 +112,46 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
         }));
     };
 
-    const handlePublish = async () => {
-        if (!imageFile) {
-            toast.error("Debes subir una imagen");
-            return;
-        }
+    const handleEdit = async () => {
+
 
         if (publishing) return;
 
         setPublishing(true);
 
         try {
-            const imageUrl = await uploadToCloudinary(imageFile, "events-banners");
 
-            const payload: PostEventRequest = {
-                ...form,
-                imagenPortadaUrl: imageUrl,
-                estadoEvento: "publicado",
-            };
+            if (imageFile) {
+                const imageUrl = await uploadToCloudinary(imageFile, "events-banners");
 
-            const ok = await onCreate(payload);
+                const payload: PostEventRequest = {
+                    ...form,
+                    imagenPortadaUrl: imageUrl,
+                    estadoEvento: "publicado",
+                };
+                const ok = await EventService.putEvent(event.idEvento, payload);
 
-            if (ok) {
-                toast.success("Evento publicado")
-                resetForm()
-                setOpen(false)
+                if (ok) {
+                    toast.success("Evento Editado")
+                    resetForm()
+                    setOpen(false)
+                }
+            } else {
+                const payload: PostEventRequest = {
+                    ...form,
+                    estadoEvento: "publicado",
+                };
+
+                const ok = await EventService.putEvent(event.idEvento, payload);
+
+                if (ok) {
+                    toast.success("Evento Editado")
+                    resetForm()
+                    setOpen(false)
+                }
             }
+
+
         } catch (error) {
             toast.error("Error publicando el evento");
         } finally {
@@ -152,12 +166,12 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
             estadoEvento: "borrador",
         };
 
-        const ok = await onCreate(payload);
+        const ok = await EventService.putEvent(event.idEvento, payload);
 
         if (ok) {
             toast.success("Borrador guardado")
             resetForm()
-            setOpen(false) // 👈
+            setOpen(false)
         }
     };
 
@@ -184,6 +198,7 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
         fetchCities()
     }, [])
 
+
     const fetchSubcategories = async (categoryId: number) => {
         const resp = await SubCategoryService.getAll()
 
@@ -207,9 +222,8 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline">
-                    <span>New</span>
-                    <PlusIcon />
+                <Button variant={"default"} size={"icon-sm"}>
+                    <Edit />
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[1380px]">
@@ -299,7 +313,8 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
                             <Label>{t("category")}</Label>
                             <CategoryComboBox categories={categories} onSelectCategory={(id) =>
                                 fetchSubcategories(id)
-                            } />
+                            }
+                            />
                         </div>
 
 
@@ -353,11 +368,6 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
                                 }))
                             } />
                         </div>
-
-                        {/* <div>
-                        </div>
-                        <div className="col-span-5 h-50">
-                        </div> */}
 
 
                         {/* CHECKBOXES */}
@@ -417,7 +427,7 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
                         <Button
                             type="button"
                             disabled={loading}
-                            onClick={handlePublish}
+                            onClick={handleEdit}
                         >
                             {publishing ? t("publishing") : t("publish")}
                         </Button>
