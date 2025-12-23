@@ -1,5 +1,5 @@
 import { http } from "@/lib/http";
-import { LoginRequest, LoginResponse, SignupRequest, verifyEmailRequest, verifyEmailResponse } from "@/types/api/auth";
+import { LoginRequest, LoginResponse, SignupRequest } from "@/types/api/auth";
 import { SignInResponse } from "next-auth/react";
 
 export const AuthService = {

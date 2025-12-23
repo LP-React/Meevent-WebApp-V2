@@ -1,6 +1,5 @@
 import { http } from "@/lib/http";
 import { GetUsersResponse, PatchUserRequest, PatchUserResponse, UsuarioApi } from "@/types/api/users";
-import { mapUsuarioFromApi } from "@/types/mappers/user.mapper";
 
 export const UsersService = {
     getAll: () =>
