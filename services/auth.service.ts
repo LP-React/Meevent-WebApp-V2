@@ -9,7 +9,7 @@ export const AuthService = {
             method: "POST",
             data: payload,
         }),
-        
+
     signup: (payload: SignupRequest) =>
         http<SignInResponse>("/api/Usuarios/registrarUsuario", {
             method: "POST",

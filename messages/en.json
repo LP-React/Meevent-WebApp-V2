@@ -44,7 +44,10 @@
     "edit": "Edit",
     "start": "Start",
     "end": "End",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "organizador": "Organizer",
+    "city": "City",
+    "organizerName": "Organizer name"
   },
   "Navbar": {
     "title": "Hello world!",
@@ -116,8 +119,7 @@
     "fechaN": "Birth date",
     "enterRegistro": "Register",
     "NameArt": "Music genre",
-    "redesAr": "Social media",
-    "organizador": "Organizer"
+    "redesAr": "Social media"
   },
   "settingsLayout": {
     "description": "Lorem ipsum here idk"

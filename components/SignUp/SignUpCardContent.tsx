@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useTranslations } from 'next-intl'
 import { setCookie } from 'cookies-next'
@@ -15,7 +15,9 @@ import { UserSelectProfileForm } from './UserSelectProfileForm'
 import { UserDetailsForm } from './UserDetailsForm'
 import { SignUpSuccess } from './SignUpSuccess'
 import { SignIn } from '../SignInButton'
+import { OrganizerDetailsForm } from './OrganizerDetailsForm'
 
+type TipoUsuario = "normal" | "organizador" | "artista";
 
 export const SignUpCardContent = () => {
 
@@ -26,8 +28,9 @@ export const SignUpCardContent = () => {
     const [userData, setUserData] = useState<SignupRequest>({
         correo_electronico: "",
         nombre_completo: "",
-        contrasena: "",
-        tipo_usuario: ""
+        contrasenia: "",
+        tipo_usuario: "normal",
+        id_ciudad: 0
     })
 
     const onVerifyEmail = async (email: string) => {
@@ -47,7 +50,7 @@ export const SignUpCardContent = () => {
         setStep(2);
     }
 
-    const onSelectProfile = async (profile: string) => {
+    const onSelectProfile = async (profile: TipoUsuario) => {
         setUserData(prev => ({
             ...prev,
             tipo_usuario: profile
@@ -60,12 +63,18 @@ export const SignUpCardContent = () => {
         const payloadSignUp = {
             ...userData,
             nombre_completo: `${data.name} ${data.lastName}`,
-            contrasena: data.password
+            nombre_organizador: data.organizerName,
+            contrasenia: data.password,
+            id_ciudad: data.cityId,
+            descripcion_organizador: 'holaholaholaholaholaholaholaholaholaholahola'
         }
+
+        console.log(payloadSignUp);
+        
 
         const payloadLogin = {
             correo_electronico: payloadSignUp.correo_electronico,
-            contrasenia: payloadSignUp.contrasena
+            contrasenia: payloadSignUp.contrasenia
         }
 
         try {
@@ -78,6 +87,11 @@ export const SignUpCardContent = () => {
 
         } catch (e) { }
     }
+
+    useEffect(() => {
+        console.log(userData);
+    }, [userData])
+
 
 
     return (
@@ -95,7 +109,9 @@ export const SignUpCardContent = () => {
 
                 {step === 1 && (<EmailVerificationForm onSubmit={onVerifyEmail} />)}
                 {step === 2 && (<UserSelectProfileForm onSubmit={onSelectProfile} />)}
-                {step === 3 && (<UserDetailsForm onSubmit={onSignUp} />)}
+                {step === 3 && userData.tipo_usuario == "normal" && (<UserDetailsForm onSubmit={onSignUp} />)}
+                {step === 3 && userData.tipo_usuario == "organizador" && (<OrganizerDetailsForm onSubmit={onSignUp} />)}
+                {step === 3 && userData.tipo_usuario == "artista" && (<UserDetailsForm onSubmit={onSignUp} />)}
                 {step === 4 && (<SignUpSuccess />)}
 
                 {step === 1 && (
