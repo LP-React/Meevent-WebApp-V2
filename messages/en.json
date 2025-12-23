@@ -1,6 +1,7 @@
 {
   "common": {
     "language": "English",
+    "languageText": "Language",
     "backTo": "Back to the website",
     "email": "Email",
     "confirmEmail": "Confirm your email",

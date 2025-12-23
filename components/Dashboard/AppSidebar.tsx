@@ -25,6 +25,10 @@ import { UsuarioApi } from "@/types/api/users";
 import { useTranslations } from "next-intl";
 import { deleteCookie } from "cookies-next";
 import { signOut } from "next-auth/react"
+import { ThemeButton } from "../utils/ThemeButton"
+import { LanguageButton } from "../utils/LanguageButton"
+import { Separator } from "../ui/separator"
+import { Button } from "../ui/button"
 
 
 // Menu items.
@@ -57,9 +61,10 @@ const sidebarData = [
 
 interface Props {
     userData: UsuarioApi
+    themeCookie: string
 }
 
-export function AppSidebar({ userData }: Props) {
+export function AppSidebar({ userData, themeCookie }: Props) {
 
     const t = useTranslations("organizerSidebar")
     const c = useTranslations("common")
@@ -129,6 +134,16 @@ export function AppSidebar({ userData }: Props) {
 
             <SidebarFooter>
                 <SidebarMenu>
+
+                    <SidebarMenuItem className="flex items-center justify-between">
+                        <span className="font-semibold">{c("theme")}: </span>
+                        <ThemeButton themeCookie={themeCookie} variant={"outline"} size={"icon-sm"} />
+                    </SidebarMenuItem>
+                    <SidebarMenuItem className="flex items-center justify-between mt-2 mb-2">
+                        <span className="font-semibold">{c("languageText")}: </span>
+                        <LanguageButton />
+                    </SidebarMenuItem>
+                    <Separator />
                     <SidebarMenuItem>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -138,11 +153,13 @@ export function AppSidebar({ userData }: Props) {
                                 </SidebarMenuButton>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent
-                                side="top"
-                                className="w-full"
+                                side="right"
+                                className="w-full ml-2"
                             >
                                 <DropdownMenuItem onClick={() => { deleteCookie("userData"), signOut({ callbackUrl: "/" }) }} className="w-full">
-                                    <span className="w-full">{c("logout")}</span>
+                                    <Button variant={"destructive"}>
+                                        {c("logout")}
+                                    </Button>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>

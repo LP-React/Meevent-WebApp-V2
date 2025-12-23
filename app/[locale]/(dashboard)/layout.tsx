@@ -16,13 +16,13 @@ export default async function DashboardLayout({
 }>) {
 
     const cookieStore = await cookies();
+    const themeCookie = cookieStore.get("theme")?.value;
     const raw = cookieStore.get("userData")?.value;
-
     const userData = raw ? JSON.parse(raw) : null;
 
     return (
         <SidebarProvider>
-            <AppSidebar userData={userData} />
+            <AppSidebar userData={userData} themeCookie={themeCookie ? themeCookie : ""} />
             <main className="flex-1">
                 {children}
             </main>
