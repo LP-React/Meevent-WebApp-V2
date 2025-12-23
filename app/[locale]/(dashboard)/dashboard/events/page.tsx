@@ -15,7 +15,7 @@ export default function EventPage() {
     const [loadingCreate, setLoadingCreate] = useState(false);
 
     const raw = getCookie('userData');
-    const userData = raw ? JSON.parse(raw as string) : null;
+    const userData = raw ? JSON.parse(raw as string) : '';
 
     const fetchEvents = async () => {
         const data = await EventService.getAll({
@@ -44,6 +44,7 @@ export default function EventPage() {
     };
 
 
+
     return (
 
         <div className="p-4">
@@ -55,8 +56,7 @@ export default function EventPage() {
                         <span>Sort by</span>
                         <ArrowDownWideNarrow />
                     </Button>
-
-                    <EventCreate onCreate={handleCreateEvent} loading={loadingCreate} organizerId={userData.perfilOrganizador.id_perfil_organizador} />
+                    <EventCreate onCreate={handleCreateEvent} loading={loadingCreate} organizerId={userData?.perfilOrganizador?.id_perfil_organizador} />
                 </div>
             </div>
 
