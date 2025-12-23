@@ -43,14 +43,17 @@ export interface GetUsersResponse {
 }
 
 export interface PatchUserRequest {
+    id_usuario?: number;
     nombre_completo?: string;
-    imagen_perfil_url?: string;
-    email_verificado?: boolean;
-    contrasena?: string;
+    id_ciudad?: number;
     numero_telefono?: string;
-    fecha_nacimiento?: string;
-    cuenta_activa?: boolean;
-    tipo_usuario?: "artista" | "normal" | "organizador";
+    imagen_perfil_url?: string;
+    nombre_artistico?: string;
+    biografia_artista?: string;
+    genero_musical?: string;
+    nombre_organizador?: string;
+    descripcion_organizador?: string;
+    telefono_contacto?: string;
 }
 
 export interface PatchUserResponse {

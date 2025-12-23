@@ -163,7 +163,7 @@ export const UserMenu = ({ cookieUser, cookieTheme }: Props) => {
 
                 {/* Logout */}
                 <DropdownMenuGroup>
-                    <DropdownMenuItem className="justify-between" onClick={() => { signOut(); deleteCookie("userData") }}>
+                    <DropdownMenuItem className="justify-between" onClick={() => { signOut({ callbackUrl: "/" }), deleteCookie("userData") }}>
                         <span>{c('logout')}</span>
                         <LogOut />
                     </DropdownMenuItem>

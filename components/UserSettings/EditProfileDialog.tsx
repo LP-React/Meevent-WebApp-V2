@@ -34,6 +34,8 @@ export const EditProfileDialog = ({ user, label }: Props) => {
             imagen_perfil_url: urlAvatar
         }
 
+        
+
         try {
             const resp = await UsersService.editUser(user.id_usuario, payload)
             setCookie("userData", resp.usuarioActualizado)
