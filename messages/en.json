@@ -171,20 +171,23 @@
     "nameEvent": "Name",
     "publishing": "Publishing",
     "saving": "Saving",
-
     "city": "City",
     "venue": "Venue",
-
     "noSubcategoriesFound": "No subcategories found",
     "selectSubcategory": "Select subcategory",
     "searchSubCategory": "Search subcategory...",
-    
     "noCategoriesFound": "No categories found",
     "selectCategory": "Select category",
     "searchCategory": "Search category...",
-
     "noCitiesFound": "No cities found",
     "selectCity": "Select Citty",
     "searchCities": "Search Cities..."
+  },
+  "organizerSidebar": {
+    "application": "Application",
+    "maintance": "Maintance",
+    "events": "Events",
+    "profile": "Profile",
+    "organizerProfile": "Organizer profile"
   }
 }
