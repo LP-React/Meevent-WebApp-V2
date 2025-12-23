@@ -7,16 +7,15 @@ import { EventoApi, PostEventRequest } from "@/types/api/events";
 import { EventService } from "@/services/event.service";
 import { EventCreate } from "@/components/Dashboard/Event/EventCreate";
 import { getCookie } from "cookies-next";
+import { EventCard } from "@/components/Dashboard/Event/EventCard";
 
-export default function GamesPage() {
+export default function EventPage() {
 
     const [events, setEvents] = useState<EventoApi[]>([])
     const [loadingCreate, setLoadingCreate] = useState(false);
 
     const raw = getCookie('userData');
     const userData = raw ? JSON.parse(raw as string) : null;
-    console.log(userData);
-
 
     const fetchEvents = async () => {
         const data = await EventService.getAll({
@@ -33,7 +32,6 @@ export default function GamesPage() {
     const handleCreateEvent = async (payload: PostEventRequest) => {
         setLoadingCreate(true);
         try {
-            console.log(payload)
             await EventService.postEvent(payload);
             await fetchEvents();
             return true;
@@ -57,13 +55,13 @@ export default function GamesPage() {
                         <ArrowDownWideNarrow />
                     </Button>
 
-                    <EventCreate onCreate={handleCreateEvent} loading={loadingCreate} organizerId={userData.perfilOrganizador.id_perfil_organizador}/>
+                    <EventCreate onCreate={handleCreateEvent} loading={loadingCreate} organizerId={userData.perfilOrganizador.id_perfil_organizador} />
                 </div>
             </div>
 
-            <div className="flex flex-wrap space-x-4 space-y-4 p-2">
+            <div className="flex flex-wrap gap-4 p-4">
                 {events.map((eve) => (
-                    <div key={eve.idEvento}>{eve.tituloEvento}</div>
+                    <EventCard key={eve.idEvento} event={eve} />
                 ))}
             </div>
         </div >

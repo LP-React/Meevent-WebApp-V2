@@ -133,3 +133,28 @@ export interface Post {
     subcategoriaEventoId: number;
     localId: number;
 }
+
+
+/* PUT */
+
+export interface PutEventRequest {
+    tituloEvento: string;
+    descripcionEvento: string;
+    descripcionCorta: string;
+    fechaInicio: string;
+    fechaFin: string;
+    zonaHoraria: string;
+    estadoEvento: string;
+    capacidadEvento: number;
+    eventoGratuito: boolean;
+    eventoOnline: boolean;
+    imagenPortadaUrl: string;
+    subcategoriaEventoId: number;
+    localId: number;
+}
+
+export interface PutEventResponse {
+    exitoso: boolean;
+    mensaje: string;
+    evento: EventoApi;
+}

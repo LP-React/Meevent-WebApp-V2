@@ -160,7 +160,7 @@
     "bannerImage": "Banner image",
     "organizer": "Organizer",
     "subcategory": "Subcategory",
-    "venue": "Venue",
+    "category": "Category",
     "free": "Free tickets",
     "online": "Online event",
     "cancel": "Cancel",
@@ -170,6 +170,21 @@
     "noImageSelected": "No image selected",
     "nameEvent": "Name",
     "publishing": "Publishing",
-    "saving": "Saving"
+    "saving": "Saving",
+
+    "city": "City",
+    "venue": "Venue",
+
+    "noSubcategoriesFound": "No subcategories found",
+    "selectSubcategory": "Select subcategory",
+    "searchSubCategory": "Search subcategory...",
+    
+    "noCategoriesFound": "No categories found",
+    "selectCategory": "Select category",
+    "searchCategory": "Search category...",
+
+    "noCitiesFound": "No cities found",
+    "selectCity": "Select Citty",
+    "searchCities": "Search Cities..."
   }
 }
