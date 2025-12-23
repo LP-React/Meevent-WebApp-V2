@@ -4,6 +4,7 @@ import { Button } from '../ui/button'
 import { Calendar, MapPin } from 'lucide-react'
 import { Card, CardDescription, CardHeader } from '../ui/card'
 import { EventoApi } from '@/types/api/events'
+import Link from 'next/link'
 
 interface Props {
   event: EventoApi,
@@ -53,15 +54,14 @@ export const EventHeader = ({ event }: Props) => {
         </div>
       </div>
 
-      <Card className="hidden xl:block rounded-2xl">
-        <CardHeader className="flex flex-row items-center justify-between">
-          <div>
-            <p className="font-semibold">{/* Precio */}</p>
-            <CardDescription>{/* Hora y fecha del evento */}</CardDescription>
-          </div>
-          <Button>{t("Get tickets")}</Button>
-        </CardHeader>
-      </Card>
+      {/* <Card className="rounded-2xl"> */}
+        {/* <CardHeader className="flex flex-row items-center justify-between"> */}
+
+          <Link href={`https://wa.me/${event.organizador.telefonoContacto}`} className='place-self-end cursor-pointer'>
+            <Button className='cursor-pointer'>{t("contactTo")}</Button>
+          </Link>
+        {/* </CardHeader> */}
+      {/* </Card> */}
 
     </section>
   )

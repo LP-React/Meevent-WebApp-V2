@@ -42,7 +42,7 @@ export default async function EventPage({ params }: Props) {
     return (
         <div className=" w-[65%] m-auto min-h-dvh pb-28 mt-20">
 
-            <EventBanner urlImage={evento.imagenPortadaUrl || ''} />
+            <EventBanner urlImage={evento.imagenPortadaUrl || ''} estadoEvento={evento.estadoEventoCliente}/>
             <div className="px-4">
 
                 <EventHeader event={evento} />
@@ -66,7 +66,7 @@ export default async function EventPage({ params }: Props) {
 
                 <FieldSeparator />
 
-                <EventButtonMobile />
+                {/* <EventButtonMobile /> */}
             </div>
         </div>
     );

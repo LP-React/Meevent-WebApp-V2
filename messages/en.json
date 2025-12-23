@@ -150,7 +150,8 @@
     "Public": "Public transport",
     "Biking": "Biking",
     "Walking": "Walking",
-    "overview": "Overview"
+    "overview": "Overview",
+    "contactTo": "Contact to buy"
   },
   "formPostEvent": {
     "createEvent": "Create event",
