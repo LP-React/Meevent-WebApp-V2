@@ -31,7 +31,7 @@ export const EventGood = () => {
           {carouselItems.map((item) => (
             <CarouselItem
               key={item.id}
-              className="md:basis-1/2 lg:basis-1/3"
+              className="md:basis-1/2 lg:basis-1/4"
             >
               <Card className="h-full">
                 <CardContent className="flex flex-col gap-3 p-6">
