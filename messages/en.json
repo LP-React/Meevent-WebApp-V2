@@ -47,7 +47,8 @@
     "dashboard": "Dashboard",
     "organizador": "Organizer",
     "city": "City",
-    "organizerName": "Organizer name"
+    "organizerName": "Organizer name",
+    "events": "Events in"
   },
   "Navbar": {
     "title": "Hello world!",

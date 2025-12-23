@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Button } from "../ui/button";
+import { getSafeImageSrc } from '../utils/imageHelper';
 
 interface Props {
   urlImage: string;
@@ -10,7 +11,7 @@ export const EventBanner = ({ urlImage, estadoEvento }: Props) => {
   return (
     <div className="w-full h-124 overflow-hidden rounded-2xl bg-muted shadow-xl relative">
       <Image
-        src={urlImage}
+        src={getSafeImageSrc(urlImage)}
         alt="Banner del evento"
         width={900}
         height={700}
