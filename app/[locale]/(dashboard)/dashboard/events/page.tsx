@@ -45,6 +45,7 @@ export default function EventPage() {
 
 
     return (
+
         <div className="p-4">
 
             <div className="flex justify-between items-center border-b-2 pl-2 py-2">
