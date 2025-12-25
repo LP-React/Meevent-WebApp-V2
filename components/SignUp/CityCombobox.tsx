@@ -28,7 +28,7 @@ export function CityComboBox({ cities, onSelectCity }: Props) {
 
     const [open, setOpen] = useState(false)
     const [value, setValue] = useState("")
-    const t = useTranslations("formPostEvent")
+    const t = useTranslations("common")
 
     return (
         <Popover open={open} onOpenChange={setOpen}>

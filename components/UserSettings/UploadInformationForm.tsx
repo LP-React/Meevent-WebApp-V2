@@ -65,7 +65,7 @@ export const UploadInformationForm = ({ onUpload, userData }: Props) => {
                 name="fecha_nacimiento"
                 type="date"
                 onChange={handleChange}
-            // value={userData.fecha_nacimiento}
+                value={form.fecha_nacimiento || ""}
             />
 
             <Button type="submit" className="w-full">

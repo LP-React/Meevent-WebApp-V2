@@ -31,7 +31,16 @@
     "signUpHere": "Regístrate aquí",
     "meevent": "Meevent",
     "login": "Iniciar sesión",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "logout": "Cerrar sesión",
+    "dashboard": "Dashboard",
+    "mode": "Modo",
+    "organizerName": "Nombre del organizador", 
+    "city": "Ciudad",                             
+    "selectCity": "Selecciona una ciudad",
+    "searchSubCategory": "Buscar...",
+    "noSubcategoriesFound": "No se encontraron resultados"
+    
   },
   "Navbar": {
     "title": "¡Hola mundo!",
