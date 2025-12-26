@@ -55,7 +55,7 @@ export function EventEdit({ event }: Props) {
         imagenPortadaUrl: event.imagenPortadaUrl,
         perfilOrganizadorId: event.organizador.idPerfilOrganizador,
         subcategoriaEventoId: event.subcategoria.idSubcategoriaEvento,
-        // localId: event.ubicacion.idLocal,
+        localId: event.ubicacion.idLocal,
     });
 
     const resetForm = () => {
@@ -73,7 +73,7 @@ export function EventEdit({ event }: Props) {
             imagenPortadaUrl: event.imagenPortadaUrl,
             perfilOrganizadorId: event.organizador.idPerfilOrganizador,
             subcategoriaEventoId: event.subcategoria.idSubcategoriaEvento,
-            // localId: event.ubicacion.idLocal,
+            localId: event.ubicacion.idLocal,
         })
 
         setImageFile(null)
@@ -134,8 +134,10 @@ export function EventEdit({ event }: Props) {
                 if (ok) {
                     toast.success("Evento Editado")
                     resetForm()
+                     router.refresh() 
                     setOpen(false)
                 }
+
             } else {
                 const payload: PostEventRequest = {
                     ...form,
