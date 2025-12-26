@@ -1,6 +1,7 @@
 import { SettingsSidebar } from "@/components/UserSettings/SettingSidebar";
 import { Link } from "@/i18n/navigations";
 import { getTranslations } from "next-intl/server";
+import { Toaster } from "sonner";
 
 const settingLinks = [
     { href: "/account/settings/profile", label: "profile" },
@@ -20,6 +21,7 @@ export default async function SettingsLayout({ children }: { children: React.Rea
                     {children}
                 </div>
             </div>
+            <Toaster/>
         </main>
     );
 }

@@ -54,6 +54,7 @@ export interface PatchUserRequest {
     nombre_organizador?: string;
     descripcion_organizador?: string;
     telefono_contacto?: string;
+    fecha_nacimiento?: string;
 }
 
 export interface PatchUserResponse {

@@ -40,7 +40,7 @@ const menuOptions = [
     },
     {
         label: "Settings",
-        link: "/account/settings",
+        link: "/account/settings/profile",
         icon: Settings
     }
 ]

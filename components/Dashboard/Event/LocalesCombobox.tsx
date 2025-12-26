@@ -22,9 +22,10 @@ import { Local } from "@/types/api/locales"
 interface Props {
     locales: Local[];
     onSelectLocal: (id: number) => void
+    disabled?: boolean
 }
 
-export function LocalesComboBox({ locales, onSelectLocal }: Props) {
+export function LocalesComboBox({ locales, onSelectLocal, disabled }: Props) {
 
     const [open, setOpen] = useState(false)
     const [value, setValue] = useState("")
@@ -38,6 +39,7 @@ export function LocalesComboBox({ locales, onSelectLocal }: Props) {
                     role="combobox"
                     aria-expanded={open}
                     className="w-full justify-between"
+                    disabled={disabled}
                 >
                     {value
                         ? locales.find((loc) => loc.nombreLocal === value)?.nombreLocal

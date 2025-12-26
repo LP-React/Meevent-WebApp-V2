@@ -48,7 +48,14 @@
     "organizador": "Organizer",
     "city": "City",
     "organizerName": "Organizer name",
-    "events": "Events in"
+    "events": "Events in",
+    "accountSecurity": "Account security settings",
+    "changePassword": "Change password",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "deleteAccount": "Delete account",
+    "deleteAccountConfirmation": "Are you sure to delete your account?",
+    "typeYourPassword": "Type your password to confirm"
   },
   "Navbar": {
     "title": "Hello world!",

@@ -1,5 +1,5 @@
 import { http } from "@/lib/http";
-import { LoginRequest, LoginResponse, SignupRequest } from "@/types/api/auth";
+import { DisableAccountRequest, EditPasswordRequest, EditPasswordResponse, LoginRequest, LoginResponse, SignupRequest } from "@/types/api/auth";
 import { SignInResponse } from "next-auth/react";
 
 export const AuthService = {
@@ -17,5 +17,17 @@ export const AuthService = {
         }),
 
     verifyEmail: (email: string) =>
-        http<boolean>(`/api/Usuarios/verificarEmail/${email}`)
+        http<boolean>(`/api/Usuarios/verificarEmail/${email}`),
+
+    updatePassword: (id: number, payload: EditPasswordRequest) =>
+        http<EditPasswordResponse>(`/api/Usuarios/cambiar-password/${id}`, {
+            method: "PATCH",
+            data: payload,
+        }),
+
+    disableAccount: (id: number, payload: DisableAccountRequest) =>
+        http<EditPasswordResponse>(`/api/Usuarios/activarCuenta/${id}`, {
+            method: "PATCH",
+            data: payload,
+        })
 };

@@ -56,7 +56,7 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
         imagenPortadaUrl: "",
         perfilOrganizadorId: organizerId,
         subcategoriaEventoId: 0,
-        localId: 0,
+        localId: null
     });
 
     const resetForm = () => {
@@ -74,7 +74,7 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
             imagenPortadaUrl: "",
             perfilOrganizadorId: organizerId,
             subcategoriaEventoId: 0,
-            localId: 0,
+            localId: null,
         })
 
         setImageFile(null)
@@ -113,6 +113,43 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
     };
 
     const handlePublish = async () => {
+
+        if (!form.tituloEvento.trim()) {
+            toast.error("El título del evento es obligatorio");
+            return false;
+        }
+        if (!form.descripcionEvento.trim()) {
+            toast.error("La descripción del evento es obligatoria");
+            return false;
+        }
+        if (!form.descripcionCorta.trim()) {
+            toast.error("La descripción corta es obligatoria");
+            return false;
+        }
+        if (!form.fechaInicio) {
+            toast.error("La fecha de inicio es obligatoria");
+            return false;
+        }
+        if (!form.fechaFin) {
+            toast.error("La fecha de finalización es obligatoria");
+            return false;
+        }
+        if (new Date(form.fechaFin) <= new Date(form.fechaInicio)) {
+            toast.error("La fecha de finalización debe ser posterior a la de inicio");
+            return false;
+        }
+        if (form.subcategoriaEventoId === 0) {
+            toast.error("Debes seleccionar una categoría y subcategoría");
+            return false;
+        }
+        if (!form.capacidadEvento) {
+            toast.error("La capacidad de asistentes debe ser mayor a 0");
+            return false;
+        }
+        if (!form.eventoOnline && form.localId === 0) {
+            toast.error("Debes seleccionar un lugar (venue) para el evento presencial");
+            return false;
+        }
         if (!imageFile) {
             toast.error("Debes subir una imagen");
             return;
@@ -130,6 +167,8 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
                 imagenPortadaUrl: imageUrl,
                 estadoEvento: "publicado",
             };
+
+            console.log(payload);
 
             const ok = await onCreate(payload);
 
@@ -281,6 +320,7 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
                         </div>
 
 
+
                         <div className="grid gap-2 col-span-3">
                             <Label htmlFor="fechaInicio">{t("startDate")}</Label>
                             <Input
@@ -288,6 +328,7 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
                                 name="fechaInicio"
                                 type="datetime-local"
                                 value={form.fechaInicio}
+                                min={new Date().toISOString().slice(0, 16)}
                                 onChange={handleChange}
                             />
                         </div>
@@ -315,16 +356,18 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
                                 onChange={handleChange}
                             />
                         </div>
+
+
                         <div className="col-span-12 lg:col-span-2 grid gap-2">
                             <Label htmlFor="localId">{t("city")}</Label>
-                            <CityComboBox cities={cities} onSelectCity={(id) =>
+                            <CityComboBox cities={cities} disabled={form.eventoOnline} onSelectCity={(id) =>
                                 fetchLocales(id)
                             } />
                         </div>
 
                         <div className="col-span-12 lg:col-span-3 grid gap-2">
                             <Label htmlFor="localId">{t("venue")}</Label>
-                            <LocalesComboBox locales={locales} onSelectLocal={(id) =>
+                            <LocalesComboBox locales={locales} disabled={form.eventoOnline} onSelectLocal={(id) =>
                                 setForm(prev => ({
                                     ...prev,
                                     localId: id,
@@ -339,6 +382,7 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
                                 name="fechaFin"
                                 type="datetime-local"
                                 value={form.fechaFin}
+                                min={new Date().toISOString().slice(0, 16)}
                                 onChange={handleChange}
                             />
                         </div>
@@ -384,6 +428,7 @@ export function EventCreate({ onCreate, loading, organizerId }: Props) {
                                     setForm(prev => ({
                                         ...prev,
                                         eventoOnline: Boolean(checked),
+                                        localId: null
                                     }))
                                 }
                             />

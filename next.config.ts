@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "res.cloudinary.com",
       },
+      {
+        protocol: "https",
+        hostname: "miapp.com",
+      },
+      // AGREGA EL DOMINIO DEL ERROR AQUÍ:
+      {
+        protocol: "https",
+        hostname: "img.com",
+      },
     ],
   },
 };

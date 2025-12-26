@@ -14,7 +14,7 @@ api.interceptors.response.use(
     (response) => response,
     (error) => {
         const message =
-            error.response?.data?.message || error.message || "Error desconocido";
+            error.response?.message || error.message || "Error desconocido";
         return Promise.reject(new Error(message));
     }
 );

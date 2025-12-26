@@ -22,9 +22,10 @@ import { Ciudad } from "@/types/api/city"
 interface Props {
     cities: Ciudad[];
     onSelectCity: (id: number) => void
+    disabled?: boolean
 }
 
-export function CityComboBox({ cities, onSelectCity }: Props) {
+export function CityComboBox({ cities, onSelectCity, disabled = false }: Props) {
 
     const [open, setOpen] = useState(false)
     const [value, setValue] = useState("")
@@ -38,6 +39,7 @@ export function CityComboBox({ cities, onSelectCity }: Props) {
                     role="combobox"
                     aria-expanded={open}
                     className="w-full justify-between"
+                    disabled={disabled}
                 >
                     {value
                         ? cities.find((cit) => cit.nombreCiudad === value)?.nombreCiudad

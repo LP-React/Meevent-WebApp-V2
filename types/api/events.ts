@@ -105,7 +105,7 @@ export interface PostEventRequest {
     imagenPortadaUrl: string;
     perfilOrganizadorId: number;
     subcategoriaEventoId: number;
-    localId: number;
+    localId: number | null;
 }
 
 

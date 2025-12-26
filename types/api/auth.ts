@@ -45,3 +45,24 @@ export interface verifyEmailResponse {
     mensaje: string;
     correoExiste: boolean;
 }
+
+
+export interface EditPasswordRequest {
+    contraseniaActual: string;
+    nuevaContrasenia: string;
+}
+
+export interface EditPasswordResponse {
+    mensaje: string;
+}
+
+export interface DisableAccountRequest {
+    cuenta_activa: boolean;
+}
+
+
+export interface DisableAccountResponse {
+    exitoso: boolean;
+    mensaje: string;
+    cuentaActiva: boolean;
+}
